@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
+    x:Class="ArthsAppProject.Views.Exercises"
+    Title="Exercises">
+
+
+
+	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+          <Label Text="Exercises" VerticalOptions="Center" HorizontalOptions="Center" />
+		          <Button Text="Simple Ex Form" Command="{Binding Path=NavigateCommand}" CommandParameter="SimpleExForm" />
+          <Button Text="Pain Ex Form" Command="{Binding Path=NavigateCommand}" CommandParameter="PainExForm" />
+	  </StackLayout>
+    
+
+</ContentPage>
+

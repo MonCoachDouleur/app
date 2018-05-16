@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
+    x:Class="ArthsAppProject.Views.Hello"
+    Title="Hello">
+
+
+
+	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+          <Label Text="Hello" VerticalOptions="Center" HorizontalOptions="Center" />
+		          <Button Text="New User" Command="{Binding Path=NavigateCommand}" CommandParameter="NewUser" />
+          <Button Text="Login" Command="{Binding Path=NavigateCommand}" CommandParameter="Login" />
+          <Button Text="Master Detail" Command="{Binding Path=NavigateAbsoluteCommand}" CommandParameter="/MasterDetail/NavigationPage/Home" />
+	  </StackLayout>
+    
+
+</ContentPage>
+
