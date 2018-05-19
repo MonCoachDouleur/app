@@ -8,14 +8,14 @@
     x:Class="ArthsAppProject.Views.Login"
     Title="Login">
 
-
-
-	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-          <Label Text="Login" VerticalOptions="Center" HorizontalOptions="Center" />
-		          <Button Text="Hello" Command="{Binding Path=NavigateCommand}" CommandParameter="Hello" />
-          <Button Text="New User" Command="{Binding Path=NavigateCommand}" CommandParameter="NewUser" />
-	  </StackLayout>
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Username" />
+            <Entry x:Name="usernameEntry" Placeholder="Username" />
+            <Label Text="Password" />
+            <Entry x:Name="passwordEntry" IsPassword="true" />
+            <Button Text="Login"/>
+            <Label x:Name="messageLabel" />
+        </StackLayout>
     
-
 </ContentPage>
 

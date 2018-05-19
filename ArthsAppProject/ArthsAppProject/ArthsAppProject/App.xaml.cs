@@ -16,9 +16,24 @@ namespace ArthsAppProject
          * This imposes a limitation in which the App class must have a default constructor. 
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
+
+        static ArthsDatabase database;
+
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
+
+        public static ArthsDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new ArthsDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("ArthsSQLite.db"));
+                }
+                return database;
+            }
+        }
 
         protected override async void OnInitialized()
         {
