@@ -10,11 +10,14 @@
 
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
         <Label Text="Username" />
-        <Entry x:Name="usernameEntry" Placeholder="Username" />
+        <Entry x:Name="usernameEntry" Placeholder="Username" Text="{Binding Username}"/>
+        
         <Label Text="Password" />
-        <Entry x:Name="passwordEntry" IsPassword="true" Placeholder="Password" />
+        <Entry x:Name="passwordEntry" IsPassword="true" Placeholder="Password" Text="{Binding Password}" />
+        
         <Label Text="Birth Date" />
-        <DatePicker Date="{Binding TheDate}" Format="{Binding DateFormat}" />
+        <DatePicker Date="{Binding Date}" Format="{Binding DateFormat}" />
+        
         <Label Text="Pain Area" />
         <Picker VerticalOptions="CenterAndExpand" >
             <Picker.Items>
@@ -28,7 +31,8 @@
                 <x:String>Chevilles</x:String>
             </Picker.Items>
         </Picker>
-        <Button Text="Sign Up"/>
+
+        <Button Text="Sign Up" Command="{Binding SubmitCommand}"/>
         <Label x:Name="newUserEntry" />
     </StackLayout>
 

@@ -65,9 +65,7 @@ namespace ArthsAppProject.ViewModels
                 {
                     _dialogService.DisplayAlertAsync("Error", "Invalid Login or password, try again", "OK");
                 }
-                
-
-                
+                 
             }
             
         }

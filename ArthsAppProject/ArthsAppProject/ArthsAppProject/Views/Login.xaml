@@ -12,11 +12,11 @@
         <Label Text="Username"  />
         <Entry x:Name="usernameEntry" Placeholder="Username" Text="{Binding Username}" />
 
-        <Entry x:Name="passwordEntry" IsPassword="true" Text="{Binding Password}"/>
         <Label Text="Password" />
+        <Entry x:Name="passwordEntry" IsPassword="true" Text="{Binding Password}"/>
         
-        <Button Text="Log In" Command="{Binding SubmitCommand}"/>
         <Label x:Name="loginEntry" />
+        <Button Text="Log In" Command="{Binding SubmitCommand}"/>
     </StackLayout>
 
 </ContentPage>
