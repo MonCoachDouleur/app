@@ -15,34 +15,36 @@ namespace ArthsAppProject
 			admin = new User();
 			admin.Login_u = "test";
             admin.Pass_u = Hash.HashSHA512("test");
+
             database = new SQLiteAsyncConnection(dbPath);
             database.DropTableAsync<User>().Wait();
             database.CreateTableAsync<User>().Wait();
+
             SaveUserAsync(admin);
         }
 
        
 
-        public Task<int> SaveUserAsync(User user)
+        public int SaveUserAsync(User user)
         {
             if (user.Id_u != 0)
             {
-                return database.UpdateAsync(user);
+                return database.UpdateAsync(user).Result;
             }
             else
             {
-                return database.InsertAsync(user);
+                return database.InsertAsync(user).Result;
             }
         }
 
-        public Task<User> GetUserAsync(int id)
+        public User GetUserAsync(int id)
         {
-			return database.Table<User>().Where(i => i.Id_u.Equals(id)).FirstOrDefaultAsync();
+			return database.Table<User>().Where(i => i.Id_u.Equals(id)).FirstOrDefaultAsync().Result;
         }
 
-		public Task<User> GetUserByLogin(String login){
+		public User GetUserByLogin(String login){
 
-			return database.Table<User>().Where(i => i.Login_u.Equals(login)).FirstOrDefaultAsync();
+			return database.Table<User>().Where(i => i.Login_u.Equals(login)).FirstOrDefaultAsync().Result;
 		}
 
 
