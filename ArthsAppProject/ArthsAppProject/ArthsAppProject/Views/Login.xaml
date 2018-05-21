@@ -13,8 +13,8 @@
             <Entry x:Name="usernameEntry" Placeholder="Username" />
             <Label Text="Password" />
             <Entry x:Name="passwordEntry" IsPassword="true" />
-            <Button Text="Login"/>
-            <Label x:Name="messageLabel" />
+            <Button Text="Login" Command="{Binding LoginCommand}"/>
+            <Label x:Name="loginEntry" />
         </StackLayout>
     
 </ContentPage>

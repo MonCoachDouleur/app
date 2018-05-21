@@ -12,18 +12,26 @@ namespace ArthsAppProject
         
 		public ArthsDatabase(string dbPath)
         {
-			admin = new User();
-			admin.Login = "test";
-			admin.Password = "test";
-
+            admin = new User();
+            admin.Login = "test";
 			database = new SQLiteAsyncConnection(dbPath);
-
             database.CreateTableAsync<User>().Wait();
-			database.CreateTableAsync<Notification>().Wait();
-           
+            SaveUserAsync(admin);
         }
-        
-		public Task<User> GetUserAsync(int id)
+
+        public Task<int> SaveUserAsync(User user)
+        {
+            if (user.ID != 0)
+            {
+                return database.UpdateAsync(user);
+            }
+            else
+            {
+                return database.InsertAsync(user);
+            }
+        }
+
+        public Task<User> GetUserAsync(int id)
         {
 			return database.Table<User>().Where(i => i.ID.Equals(id)).FirstOrDefaultAsync();
         }
