@@ -13,8 +13,8 @@ namespace ArthsAppProject
 		public ArthsDatabase(string dbPath)
         {
 			admin = new User();
-			admin.Login = "test";
-			admin.Password = "test";
+			admin.Login_u = "test";
+			admin.Pass_u = "test";
 
 			database = new SQLiteAsyncConnection(dbPath);
 
@@ -25,12 +25,12 @@ namespace ArthsAppProject
         
 		public Task<User> GetUserAsync(int id)
         {
-			return database.Table<User>().Where(i => i.ID.Equals(id)).FirstOrDefaultAsync();
+			return database.Table<User>().Where(i => i.Id_u.Equals(id)).FirstOrDefaultAsync();
         }
 
 		public Task<User> GetUserByLogin(String login){
 
-			return database.Table<User>().Where(i => i.Login.Equals(login)).FirstOrDefaultAsync();
+			return database.Table<User>().Where(i => i.Login_u.Equals(login)).FirstOrDefaultAsync();
 		}
 
 
