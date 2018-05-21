@@ -6,7 +6,7 @@ namespace ArthsAppProject
     {
         [PrimaryKey, AutoIncrement]
         public int Id_pain { get; set; }
-        public DateTime date { get; set; }
+        public DateTime Date { get; set; }
         public User user;
 
     }

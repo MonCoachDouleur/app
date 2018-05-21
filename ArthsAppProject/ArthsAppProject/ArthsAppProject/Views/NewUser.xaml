@@ -8,14 +8,29 @@
     x:Class="ArthsAppProject.Views.NewUser"
     Title="New User">
 
-
-
-	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-          <Label Text="NewUser" VerticalOptions="Center" HorizontalOptions="Center" />
-		          <Button Text="Hello" Command="{Binding Path=NavigateCommand}" CommandParameter="Hello" />
-          <Button Text="Login" Command="{Binding Path=NavigateCommand}" CommandParameter="Login" />
-	  </StackLayout>
-    
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <Label Text="Username" />
+        <Entry x:Name="usernameEntry" Placeholder="Username" />
+        <Label Text="Password" />
+        <Entry x:Name="passwordEntry" IsPassword="true" Placeholder="Password" />
+        <Label Text="Birth Date" />
+        <DatePicker Date="{Binding TheDate}" Format="{Binding DateFormat}" />
+        <Label Text="Pain Area" />
+        <Picker VerticalOptions="CenterAndExpand" >
+            <Picker.Items>
+                <x:String>Dos</x:String>
+                <x:String>Genoux</x:String>
+                <x:String>Hanches</x:String>
+                <x:String>Mains</x:String>
+                <x:String>Rachis</x:String>
+                <x:String>Epaules</x:String>
+                <x:String>Coudes</x:String>
+                <x:String>Chevilles</x:String>
+            </Picker.Items>
+        </Picker>
+        <Button Text="Sign Up"/>
+        <Label x:Name="newUserEntry" />
+    </StackLayout>
 
 </ContentPage>
 

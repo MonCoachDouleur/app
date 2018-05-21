@@ -5,7 +5,7 @@ namespace ArthsAppProject
     public class Appointment
     {
         [PrimaryKey, AutoIncrement]
-        public DateTime dateAppointment { get; set; }
+        public DateTime DateAppointment { get; set; }
         public User user;
 
     }
