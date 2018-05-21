@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
+using System.Security.Cryptography;
 
 namespace ArthsAppProject
 {
@@ -9,17 +10,18 @@ namespace ArthsAppProject
     {
 		readonly SQLiteAsyncConnection database;
 		private User admin;
-        
 		public ArthsDatabase(string dbPath)
         {
 			admin = new User();
 			admin.Login_u = "test";
-			admin.Pass_u = "test";
-
-			database = new SQLiteAsyncConnection(dbPath);
+            admin.Pass_u = Hash.HashSHA512("test");
+            database = new SQLiteAsyncConnection(dbPath);
+            database.DropTableAsync<User>().Wait();
             database.CreateTableAsync<User>().Wait();
             SaveUserAsync(admin);
         }
+
+       
 
         public Task<int> SaveUserAsync(User user)
         {

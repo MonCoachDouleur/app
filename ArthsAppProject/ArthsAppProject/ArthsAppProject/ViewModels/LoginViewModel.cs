@@ -30,7 +30,7 @@ namespace ArthsAppProject.ViewModels
         {
             User user = GetUserByLogin();
             
-            _dialogService.DisplayActionSheetAsync(user.Login, "Alert msg", "OK");
+            _dialogService.DisplayAlertAsync(user.Login_u, "Hash pwd : "+user.Pass_u, "OK");
         }
     }
 }

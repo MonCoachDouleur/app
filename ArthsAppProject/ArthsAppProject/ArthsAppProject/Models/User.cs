@@ -1,6 +1,5 @@
 ﻿using System;
 using SQLite;
-using System.Collections.Generic;
 
 namespace ArthsAppProject
 {
@@ -13,7 +12,5 @@ namespace ArthsAppProject
         public string Login_u { get; set; }
         public string Pass_u { get; set; }
         public string PainArea { get; set; }
-        //public List<Notification> listNotifications { get; set; }
-
     }
 }
