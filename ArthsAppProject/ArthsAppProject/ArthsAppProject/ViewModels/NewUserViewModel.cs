@@ -7,6 +7,8 @@ using ArthsAppProject.Infrastructure;
 using System.ComponentModel;
 using System.Windows.Input;
 using Prism.Services;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ArthsAppProject.ViewModels
 {
@@ -39,6 +41,28 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
+        private PainAreaEnum selectedPainArea;
+
+        public PainAreaEnum SelectedPainArea
+        {
+            get
+            {
+                return selectedPainArea;
+            }
+            set
+            {
+                selectedPainArea = value;   
+            }
+        }
+
+        public List<string> PainAreaNames
+        {
+            get
+            {
+                return Enum.GetNames(typeof(PainAreaEnum)).Select(b => b.SplitCamelCase()).ToList();
+            }
+        }
+
         public NewUserViewModel(INavigationService navigationService, IPageDialogService dialogService) : base (navigationService)
         {
             _dialogService = dialogService;
@@ -48,7 +72,8 @@ namespace ArthsAppProject.ViewModels
 
         private void OnSubmit()
         {
-            User user = new User(username, password);
+            User user = new User(username, password, selectedPainArea);
+            Console.WriteLine(selectedPainArea);
             App.Database.SaveUserAsync(user);
             _navigationService.NavigateAsync("Login");
 

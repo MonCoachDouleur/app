@@ -11,7 +11,7 @@ namespace ArthsAppProject
         public string Surname_u { get; set; }
         public string Login_u { get; set; }
         public string Pass_u { get; set; }
-        public string PainArea { get; set; }
+        public PainAreaEnum PainArea { get; set; }
 
         public User(){ }
 
@@ -19,6 +19,13 @@ namespace ArthsAppProject
         {
             this.Login_u = login;
             this.Pass_u = Hash.HashSHA512(password);
+        }
+
+        public User(string login, string password, PainAreaEnum painAreaEnum)
+        {
+            this.Login_u = login;
+            this.Pass_u = Hash.HashSHA512(password);
+            this.PainArea = painAreaEnum;
         }
     }
 }

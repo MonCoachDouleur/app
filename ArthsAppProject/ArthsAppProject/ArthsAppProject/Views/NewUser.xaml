@@ -5,32 +5,24 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
+    xmlns:converters="clr-namespace:ArthsAppProject"
     x:Class="ArthsAppProject.Views.NewUser"
     Title="New User">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IntEnumConverter x:Key="IntEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
         <Label Text="Username" />
         <Entry x:Name="usernameEntry" Placeholder="Username" Text="{Binding Username}"/>
-        
+
         <Label Text="Password" />
         <Entry x:Name="passwordEntry" IsPassword="true" Placeholder="Password" Text="{Binding Password}" />
-        
-        <Label Text="Birth Date" />
-        <DatePicker Date="{Binding Date}" Format="{Binding DateFormat}" />
-        
+
         <Label Text="Pain Area" />
-        <Picker VerticalOptions="CenterAndExpand" >
-            <Picker.Items>
-                <x:String>Dos</x:String>
-                <x:String>Genoux</x:String>
-                <x:String>Hanches</x:String>
-                <x:String>Mains</x:String>
-                <x:String>Rachis</x:String>
-                <x:String>Epaules</x:String>
-                <x:String>Coudes</x:String>
-                <x:String>Chevilles</x:String>
-            </Picker.Items>
-        </Picker>
+        <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter=IntEnum}" />
 
         <Button Text="Sign Up" Command="{Binding SubmitCommand}"/>
         <Label x:Name="newUserEntry" />
