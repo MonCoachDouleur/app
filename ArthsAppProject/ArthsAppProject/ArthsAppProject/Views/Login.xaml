@@ -6,18 +6,53 @@
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.Login"
+    BackgroundImage="ArthImage.jpg"
     Title="Login">
-
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label Text="Username"  />
-        <Entry x:Name="usernameEntry" Placeholder="Username" Text="{Binding Username}" />
-
-        <Label Text="Password" />
-        <Entry x:Name="passwordEntry" IsPassword="true" Text="{Binding Password}"/>
-        
-        <Label x:Name="loginEntry" />
-        <Button Text="Log In" Command="{Binding SubmitCommand}"/>
-    </StackLayout>
-
+    <ContentPage.Content>
+        <StackLayout
+			Orientation="Vertical"
+			Padding="20"
+			Spacing="30">
+            <BoxView
+				HeightRequest="10" />
+            <Image
+				HorizontalOptions="Center"
+				WidthRequest="300"
+				Source="Arth.png" />
+            <Frame
+				BackgroundColor="DodgerBlue"
+				HasShadow="false">
+                <StackLayout
+					Orientation="Vertical"
+					Spacing="10">
+                    <Entry
+						x:Name="usernameEntry"
+						Placeholder="Identifiant"
+                        PlaceholderColor="White"
+						HeightRequest="40"
+                        Text="{Binding Username}"
+						TextColor="Black">
+                    </Entry>
+                    <Entry
+						x:Name="passwordEntry"
+						IsPassword="true"
+						Text="{Binding Password}"
+						Placeholder="Mot de passe"
+                        PlaceholderColor="White"
+						HeightRequest="40"
+						TextColor="Black">
+                    </Entry>
+                </StackLayout>
+            </Frame>
+            <Button
+				x:Name="LoginButton"
+				Text="Connexion"
+				TextColor="White"
+				FontAttributes="Bold"
+				FontSize="Medium"
+				HorizontalOptions="FillAndExpand"
+				BackgroundColor="CornflowerBlue" 
+                Command="{Binding SubmitCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
-

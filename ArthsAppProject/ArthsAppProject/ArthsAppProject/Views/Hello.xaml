@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<ContentPage
 	xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.Hello"
+    BackgroundImage="ArthImage.jpg"
     Title="Hello">
-
-
-
-	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-          <Label Text="Hello" VerticalOptions="Center" HorizontalOptions="Center" />
-		          <Button Text="New User" Command="{Binding Path=NavigateCommand}" CommandParameter="NewUser" />
-          <Button Text="Login" Command="{Binding Path=NavigateCommand}" CommandParameter="Login" />
-          <Button Text="Master Detail" Command="{Binding Path=NavigateAbsoluteCommand}" CommandParameter="/MasterDetail/NavigationPage/Home" />
-	  </StackLayout>
-    
-
-</ContentPage>
-
+    <RelativeLayout>
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Padding="0,50,0,0" >
+                <StackLayout>
+                    <Label Text="Arth'App" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="Blue" Font="40">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="MarkerFelt-Thin" />
+                                <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular" />
+                                <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster" />
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                    <BoxView           
+             WidthRequest="150"
+             HeightRequest="4"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="Blue"/>
+                    <Label />
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="1" Padding="0,0,0,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Button Text="S'enregistrer" BackgroundColor="Blue" TextColor="White"  VerticalOptions="Start" HeightRequest="50" Grid.Row="1" Margin="0,0,0,2" Command="{Binding Path=NavigateCommand}" CommandParameter="NewUser"/>
+                <Button Text="Se Connecter" BackgroundColor="Blue" TextColor="White"  VerticalOptions="Start" Grid.Row="2" HeightRequest="50" Margin="0,0,0,2" Command="{Binding Path=NavigateCommand}" CommandParameter="Login"/>
+            </Grid>
+        </Grid>
+    </RelativeLayout>
+</ContentPage>  

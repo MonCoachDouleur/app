@@ -7,26 +7,59 @@
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     xmlns:converters="clr-namespace:ArthsAppProject"
     x:Class="ArthsAppProject.Views.NewUser"
-    Title="New User">
+    Title="New User" 
+    BackgroundImage="ArthImage.jpg">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:IntEnumConverter x:Key="IntEnum"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label Text="Username" />
-        <Entry x:Name="usernameEntry" Placeholder="Username" Text="{Binding Username}"/>
-
-        <Label Text="Password" />
-        <Entry x:Name="passwordEntry" IsPassword="true" Placeholder="Password" Text="{Binding Password}" />
-
-        <Label Text="Pain Area" />
-        <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter=IntEnum}" />
-
-        <Button Text="Sign Up" Command="{Binding SubmitCommand}"/>
-        <Label x:Name="newUserEntry" />
-    </StackLayout>
-
+    <ContentPage.Content>
+        <StackLayout
+			Orientation="Vertical"
+			Padding="20"
+			Spacing="30">
+            <BoxView
+				HeightRequest="10" />
+            <Image
+				HorizontalOptions="Center"
+				WidthRequest="300"
+				Source="Arth.png" />
+            <Frame
+				BackgroundColor="DodgerBlue"
+				HasShadow="false">
+                <StackLayout
+					Orientation="Vertical"
+					Spacing="10">
+                    <Entry
+						x:Name="usernameEntry"
+						Placeholder="Identifiant"
+                        PlaceholderColor="White"
+						HeightRequest="40"
+                        Text="{Binding Username}"
+						TextColor="Black">
+                    </Entry>
+                    <Entry
+						x:Name="passwordEntry"
+						IsPassword="true"
+						Text="{Binding Password}"
+						Placeholder="Mot de passe"
+                        PlaceholderColor="White"
+						HeightRequest="40"
+						TextColor="Black">
+                    </Entry>
+                    <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter=IntEnum}" TextColor="White" Title="Zone de douleur"/>
+                </StackLayout>
+            </Frame>
+            <Button
+				x:Name="LoginButton"
+				Text="Login"
+				TextColor="White"
+				FontAttributes="Bold"
+				FontSize="Medium"
+				HorizontalOptions="FillAndExpand"
+				BackgroundColor="CornflowerBlue" 
+                Command="{Binding SubmitCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
-
