@@ -75,7 +75,7 @@ namespace ArthsAppProject.ViewModels
             User user = new User(username, password, selectedPainArea);
             Console.WriteLine(selectedPainArea);
             App.Database.SaveUserAsync(user);
-            _navigationService.NavigateAsync("Login");
+            _navigationService.NavigateAsync("ConfirmADD");
 
         }
     }
