@@ -6,6 +6,7 @@
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     xmlns:converters="clr-namespace:ArthsAppProject"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
     x:Class="ArthsAppProject.Views.NewUser"
     Title="New User" 
     BackgroundImage="ArthImage.jpg">
@@ -17,13 +18,13 @@
     <ContentPage.Content>
         <StackLayout
 			Orientation="Vertical"
-			Padding="20"
+			Padding="5"
 			Spacing="30">
             <BoxView
 				HeightRequest="10" />
             <Image
 				HorizontalOptions="Center"
-				WidthRequest="300"
+				WidthRequest="200"
 				Source="Arth.png" />
             <Frame
 				BackgroundColor="DodgerBlue"
@@ -33,7 +34,7 @@
 					Spacing="10">
                     <Entry
 						x:Name="usernameEntry"
-						Placeholder="Identifiant"
+                        Placeholder="Identifiant"
                         PlaceholderColor="White"
 						HeightRequest="40"
                         Text="{Binding Username}"
@@ -42,13 +43,14 @@
                     <Entry
 						x:Name="passwordEntry"
 						IsPassword="true"
-						Text="{Binding Password}"
-						Placeholder="Mot de passe"
+                        Placeholder="Password"
                         PlaceholderColor="White"
+						Text="{Binding Password}"
 						HeightRequest="40"
 						TextColor="Black">
                     </Entry>
-                    <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter=IntEnum}" TextColor="White" Title="Zone de douleur"/>
+                    <DatePicker x:Name="StartDatePicker" Format="dd/MM/yyyy" Date="{Binding BirthDate}" TextColor="Black"/>
+                    <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter=IntEnum}" Title="Zone de douleur" TextColor="Black"/>
                 </StackLayout>
             </Frame>
             <Button

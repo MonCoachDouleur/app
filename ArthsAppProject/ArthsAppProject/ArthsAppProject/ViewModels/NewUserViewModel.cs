@@ -30,6 +30,15 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
+        public DateTime birthDate
+        {
+            get { return birthDate; }
+            set
+            {
+                birthDate = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("BirthDate"));
+            }
+        }
         private string password = "";
         public string Password
         {
@@ -72,7 +81,7 @@ namespace ArthsAppProject.ViewModels
 
         private void OnSubmit()
         {
-            User user = new User(username, password, selectedPainArea);
+            User user = new User(username, password, birthDate, selectedPainArea);
             Console.WriteLine(selectedPainArea);
             App.Database.SaveUserAsync(user);
             _navigationService.NavigateAsync("ConfirmADD");
