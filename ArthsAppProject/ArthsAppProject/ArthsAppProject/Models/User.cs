@@ -17,19 +17,19 @@ namespace ArthsAppProject
 
         public User(){ }
 
-        public User(string login, string password, DateTime BirthDate)
+        public User(string login, string password, DateTime birthDate)
         {
             this.Login_u = login;
             this.Pass_u = Hash.HashSHA512(password);
-            this.BirthDate_u = BirthDate;
+            this.BirthDate_u = birthDate;
         }
 
-        public User(string login, string password, DateTime BirthDate, PainAreaEnum painAreaEnum)
+        public User(string login, string password, PainAreaEnum painAreaEnum, DateTime birthDate )
         {
             this.Login_u = login;
             this.Pass_u = Hash.HashSHA512(password);
             this.PainArea = painAreaEnum;
-            this.BirthDate_u = BirthDate;
+            this.BirthDate_u = birthDate;
         }
     }
 }

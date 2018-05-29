@@ -30,7 +30,9 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
-        public DateTime birthDate
+
+        private DateTime birthDate;
+        public DateTime BirthDate
         {
             get { return birthDate; }
             set
@@ -81,7 +83,7 @@ namespace ArthsAppProject.ViewModels
 
         private void OnSubmit()
         {
-            User user = new User(username, password, birthDate, selectedPainArea);
+            User user = new User(username, password, selectedPainArea, birthDate);
             Console.WriteLine(selectedPainArea);
             App.Database.SaveUserAsync(user);
             _navigationService.NavigateAsync("ConfirmADD");
