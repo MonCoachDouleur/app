@@ -59,7 +59,7 @@ namespace ArthsAppProject.ViewModels
             {
                 if (user.Pass_u.Equals(Hash.HashSHA512(password)))
                 {
-                    _navigationService.NavigateAsync("/MasterDetail/NavigationPage/Home");
+                    _navigationService.NavigateAsync("/MasterDetail/NavigationPage/Menu");
                 }
                 else
                 {
