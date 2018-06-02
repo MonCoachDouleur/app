@@ -11,7 +11,9 @@ namespace ArthsAppProject.Droid
         public string GetLocalFilePath(string filename)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            return Path.Combine(path, filename);
+            String Applicationfolderpath = Path.Combine(path,"Database1");
+            Directory.CreateDirectory(Applicationfolderpath);
+            return Path.Combine(Applicationfolderpath, filename);
         }
     }
 }

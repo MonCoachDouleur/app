@@ -1,29 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
+using System.Linq;
 using Xamarin.Forms;
 
-namespace ArthsAppProject
+namespace ArthsAppProject.Converter
 {
-    public class IntEnumConverter : IValueConverter
+    public class FirstValidationErrorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is Enum)
-            {
-                return (int)value;
-            }
-            return 0;
+            ICollection<string> errors = value as ICollection<string>;
+            return errors != null && errors.Count > 0 ? errors.ElementAt(0) : null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is int)
-            {
-                return Enum.ToObject(targetType, value);
-            }
-            return 0;
+            throw new NotImplementedException();
         }
     }
 }

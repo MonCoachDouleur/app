@@ -1,4 +1,5 @@
 using System;
+using ArthsAppProject.ViewModels.Base;
 using Prism;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -6,7 +7,7 @@ using Prism.Navigation;
 
 namespace ArthsAppProject.Infrastructure {
 
-    public abstract class AppMapViewModelBase : BindableBase, INavigationAware, IConfirmNavigation, IDestructible
+    public abstract class AppMapViewModelBase : ExtendedBindableObject, INavigationAware, IConfirmNavigation, IDestructible
     {
 
 		const string RootUriPrependText = "/";

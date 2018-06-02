@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArthsAppProject", "ArthsAppProject\ArthsAppProject\ArthsAppProject.csproj", "{617768A2-1178-4880-8565-E711B4902F20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArthsAppProject", "ArthsAppProject\ArthsAppProject\ArthsAppProject.csproj", "{617768A2-1178-4880-8565-E711B4902F20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArthsAppProject.Android", "ArthsAppProject\ArthsAppProject.Android\ArthsAppProject.Android.csproj", "{464C67F3-C402-4BB2-B777-A7A4E179B7BB}"
 EndProject

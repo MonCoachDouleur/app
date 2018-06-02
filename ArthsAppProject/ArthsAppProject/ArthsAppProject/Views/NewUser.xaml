@@ -5,21 +5,59 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
-    xmlns:converters="clr-namespace:ArthsAppProject"
+    xmlns:behaviors="clr-namespace:ArthsAppProject.Behaviors"
+    xmlns:converters="clr-namespace:ArthsAppProject.Converter"
     x:Class="ArthsAppProject.Views.NewUser"
     Title="New User">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
             <converters:IntEnumConverter x:Key="IntEnum"/>
+            <Style x:Key="EntryStyle" TargetType="{x:Type Entry}">
+                <Setter Property="behaviors:LineColorBehavior.ApplyLineColor" Value="True" />
+                <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource BlackColor}" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
         <Label Text="Username" />
-        <Entry x:Name="usernameEntry" Placeholder="Username" Text="{Binding Username}"/>
-
+        <Entry Placeholder="Username" Text="{Binding Username.Value, Mode=TwoWay}" Keyboard="Email">
+            <Entry.Style>
+                <OnPlatform x:TypeArguments="Style">
+                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                </OnPlatform>
+            </Entry.Style>
+            <Entry.Behaviors>
+                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserNameCommand}" />
+            </Entry.Behaviors>
+            <Entry.Triggers>
+                <DataTrigger TargetType="Entry" Binding="{Binding Username.IsValid}" Value="False">
+                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                </DataTrigger>
+            </Entry.Triggers>
+        </Entry>
+        <Label Text="{Binding Username.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
+        
         <Label Text="Password" />
-        <Entry x:Name="passwordEntry" IsPassword="true" Placeholder="Password" Text="{Binding Password}" />
+        <Entry IsPassword="true" Placeholder="Password" Text="{Binding Password.Value, Mode=TwoWay}" >
+            <Entry.Style>
+                <OnPlatform x:TypeArguments="Style">
+                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                </OnPlatform>
+            </Entry.Style>
+            <Entry.Behaviors>
+                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidatePasswordCommand}" />
+            </Entry.Behaviors>
+            <Entry.Triggers>
+                <DataTrigger TargetType="Entry" Binding="{Binding Password.IsValid}" Value="False">
+                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                </DataTrigger>
+            </Entry.Triggers>
+           
+            
+        </Entry>
+        <Label Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
 
         <Label Text="Pain Area" />
         <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter=IntEnum}" />
