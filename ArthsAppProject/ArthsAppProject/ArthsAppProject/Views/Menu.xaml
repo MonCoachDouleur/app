@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArthsAppProject.Views.Menu"
+             BackgroundImage="ArthImage.jpg">
+    <ContentPage.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Padding="0,10,0,0" >
+                <StackLayout>
+                    <Label Text="Menu" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="Blue" Font="40">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="MarkerFelt-Thin" />
+                                <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular" />
+                                <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster" />
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                    <BoxView           
+             WidthRequest="100"
+             HeightRequest="4"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="Blue"/>
+                </StackLayout>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="Mon_compte.png" Grid.Row="0" Grid.Column="0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="Exos.png" Grid.Row="0" Grid.Column="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="Ma_Douleur" Grid.Row="1" Grid.Column="0" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="Rdv.png" Grid.Row="1" Grid.Column="1" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="Rapport.png" Grid.Row="2" Grid.Column="0" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="faq.png" Grid.Row="2" Grid.Column="1" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Grid>
+
+ <!--       <StackLayout>
+            <AbsoluteLayout>
+                <Image Source="Arth.png" AbsoluteLayout.LayoutBounds="0.2,0.2,35,35" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                <Button AbsoluteLayout.LayoutBounds="0.2,0.2,35,35" AbsoluteLayout.LayoutFlags="PositionProportional" BorderColor="Transparent" BackgroundColor="Transparent" Command="{Binding Path=NavigateCommand}" CommandParameter="Login"/>
+            </AbsoluteLayout>
+
+            <Image Source="Arth.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+            Command="{Binding TapCommand}"
+            CommandParameter="Image1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            
+        </StackLayout> -->
+
+    </ContentPage.Content>
+</ContentPage>

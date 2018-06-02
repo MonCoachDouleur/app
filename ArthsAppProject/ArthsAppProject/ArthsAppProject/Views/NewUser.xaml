@@ -7,8 +7,10 @@
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     xmlns:behaviors="clr-namespace:ArthsAppProject.Behaviors"
     xmlns:converters="clr-namespace:ArthsAppProject.Converter"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
     x:Class="ArthsAppProject.Views.NewUser"
-    Title="New User">
+    Title="New User" 
+    BackgroundImage="ArthImage.jpg">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
@@ -19,52 +21,95 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="5" Spacing="30">
+                <BoxView HeightRequest="10"/>
+                <Image HorizontalOptions="Center" WidthRequest="200" Source="Arth.png"/>
+                <Frame BackgroundColor="DodgerBlue" HasShadow="false">
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <Label Text="Adresse email" />
+                        <Entry Placeholder="Identifiant" Text="{Binding Username.Value, Mode=TwoWay}" TextColor="Black" Keyboard="Email" PlaceholderColor="White" HeightRequest="40">
+                            <Entry.Style>
+                                <OnPlatform x:TypeArguments="Style">
+                                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                </OnPlatform>
+                            </Entry.Style>
+                            <Entry.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserNameCommand}" />
+                            </Entry.Behaviors>
+                            <Entry.Triggers>
+                                <DataTrigger TargetType="Entry" Binding="{Binding Username.IsValid}" Value="False">
+                                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                </DataTrigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Label Text="{Binding Username.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
 
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-        <Label Text="Username" />
-        <Entry Placeholder="Username" Text="{Binding Username.Value, Mode=TwoWay}" Keyboard="Email">
-            <Entry.Style>
-                <OnPlatform x:TypeArguments="Style">
-                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
-                </OnPlatform>
-            </Entry.Style>
-            <Entry.Behaviors>
-                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserNameCommand}" />
-            </Entry.Behaviors>
-            <Entry.Triggers>
-                <DataTrigger TargetType="Entry" Binding="{Binding Username.IsValid}" Value="False">
-                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
-                </DataTrigger>
-            </Entry.Triggers>
-        </Entry>
-        <Label Text="{Binding Username.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
-        
-        <Label Text="Password" />
-        <Entry IsPassword="true" Placeholder="Password" Text="{Binding Password.Value, Mode=TwoWay}" >
-            <Entry.Style>
-                <OnPlatform x:TypeArguments="Style">
-                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
-                </OnPlatform>
-            </Entry.Style>
-            <Entry.Behaviors>
-                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidatePasswordCommand}" />
-            </Entry.Behaviors>
-            <Entry.Triggers>
-                <DataTrigger TargetType="Entry" Binding="{Binding Password.IsValid}" Value="False">
-                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
-                </DataTrigger>
-            </Entry.Triggers>
-           
-            
-        </Entry>
-        <Label Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
+                        <Label Text="Mot de passe" />
+                        <Entry IsPassword="true" Placeholder="Password" PlaceholderColor="White" Text="{Binding Password.Value, Mode=TwoWay}" HeightRequest="40" TextColor="Black" >
+                            <Entry.Style>
+                                <OnPlatform x:TypeArguments="Style">
+                                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                </OnPlatform>
+                            </Entry.Style>
+                            <Entry.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidatePasswordCommand}" />
+                            </Entry.Behaviors>
+                            <Entry.Triggers>
+                                <DataTrigger TargetType="Entry" Binding="{Binding Password.IsValid}" Value="False">
+                                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                </DataTrigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Label Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
 
-        <Label Text="Pain Area" />
-        <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter=IntEnum}" />
+                        <Label Text="Nom" />
+                        <Entry Placeholder="Nom" Text="{Binding Lastname.Value, Mode=TwoWay}" TextColor="Black" Keyboard="Text" PlaceholderColor="White" HeightRequest="40">
+                            <Entry.Style>
+                                <OnPlatform x:TypeArguments="Style">
+                                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                </OnPlatform>
+                            </Entry.Style>
+                            <Entry.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateLastnameCommand}" />
+                            </Entry.Behaviors>
+                            <Entry.Triggers>
+                                <DataTrigger TargetType="Entry" Binding="{Binding Lastname.IsValid}" Value="False">
+                                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                </DataTrigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Label Text="{Binding Lastname.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
 
-        <Button Text="Sign Up" Command="{Binding SubmitCommand}"/>
-        <Label x:Name="newUserEntry" />
-    </StackLayout>
+                        <Label Text="Prenom" />
+                        <Entry Placeholder="Prénom" Text="{Binding Firstname.Value, Mode=TwoWay}" TextColor="Black" Keyboard="Text" PlaceholderColor="White" HeightRequest="40">
+                            <Entry.Style>
+                                <OnPlatform x:TypeArguments="Style">
+                                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                </OnPlatform>
+                            </Entry.Style>
+                            <Entry.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateFirstnameCommand}" />
+                            </Entry.Behaviors>
+                            <Entry.Triggers>
+                                <DataTrigger TargetType="Entry" Binding="{Binding Firstname.IsValid}" Value="False">
+                                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                </DataTrigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Label Text="{Binding Firstname.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
 
+                        <Label Text="Date de naissance" />
+                        <DatePicker x:Name="StartDatePicker" Format="dd/MM/yyyy" Date="{Binding BirthDate}" TextColor="Black" />
+                        
+                        <Label Text="Zone de douleur" />
+                        <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter=IntEnum}" />
+                    </StackLayout>
+                </Frame>
+                <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
 

@@ -11,11 +11,10 @@ using System.ComponentModel;
 
 namespace ArthsAppProject.ViewModels
 {
-    public class LoginViewModel : AppMapViewModelBase, INotifyPropertyChanged
+    public class LoginViewModel : AppMapViewModelBase
     {
         public Action DisplayInvalidLoginPrompt;
         public ICommand SubmitCommand { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
         private IPageDialogService _dialogService;
         private INavigationService _navigationService;
 
@@ -25,7 +24,7 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 username = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Username"));
+                RaisePropertyChanged(() => Username);
             }
         }
 
@@ -36,7 +35,7 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 password = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Password"));
+                RaisePropertyChanged(() => Password);
             }
         }
 
@@ -53,21 +52,26 @@ namespace ArthsAppProject.ViewModels
 
             if (user == null)
             {
-                _dialogService.DisplayAlertAsync("Error", "Invalid Login or password, try again", "OK");
+                displayErrorAlert();
             }
             else
             {
                 if (user.Pass_u.Equals(Hash.HashSHA512(password)))
                 {
-                    _navigationService.NavigateAsync("/MasterDetail/NavigationPage/Home");
+                    _navigationService.NavigateAsync("/MasterDetail/NavigationPage/Menu");
                 }
                 else
                 {
-                    _dialogService.DisplayAlertAsync("Error", "Invalid Login or password, try again", "OK");
+                    displayErrorAlert();
                 }
                  
             }
             
+        }
+
+        private void displayErrorAlert()
+        {
+            _dialogService.DisplayAlertAsync("Erreur", "Identifiant ou mot de passe incorrect, veuillez réessayer.", "OK");
         }
     }
 }

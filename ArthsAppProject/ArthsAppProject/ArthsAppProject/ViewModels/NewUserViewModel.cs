@@ -18,16 +18,17 @@ namespace ArthsAppProject.ViewModels
     public class NewUserViewModel : AppMapViewModelBase
     {
         public Action DisplayInvalidLoginPrompt;
-        public ICommand SubmitCommand { get; set; }
+        public ICommand SubmitCommand => new Command(() => OnSubmit());
         public ICommand ValidateUserNameCommand => new Command(() => ValidateUserName());
-
         public ICommand ValidatePasswordCommand => new Command(() => ValidatePassword());
+        public ICommand ValidateLastnameCommand => new Command(() => ValidateLastname());
+        public ICommand ValidateFirstnameCommand => new Command(() => ValidateFirstname());
 
         private IPageDialogService _dialogService;
         private INavigationService _navigationService;
 
-        private ValidatableObject<string> _username;
         private bool _isValid;
+        private ValidatableObject<string> _username;
         public ValidatableObject<string> Username
         {
             get
@@ -55,6 +56,47 @@ namespace ArthsAppProject.ViewModels
                 RaisePropertyChanged(() => Password);
             }
         }
+        private ValidatableObject<string> _firstname;
+        public ValidatableObject<string> Firstname
+        {
+            get
+            {
+                return _firstname;
+            }
+            set
+            {
+                _firstname = value;
+
+                RaisePropertyChanged(() => Firstname);
+            }
+        }
+        private ValidatableObject<string> _lastname;
+        public ValidatableObject<string> Lastname
+        {
+            get
+            {
+                return _lastname;
+            }
+            set
+            {
+                _lastname = value;
+
+                RaisePropertyChanged(() => Lastname);
+            }
+        }
+        private DateTime _birthDate;
+        public DateTime BirthDate
+        {
+            get
+            {
+                return _birthDate;
+            }
+            set
+            {
+                _birthDate = value;
+                RaisePropertyChanged(() => BirthDate);
+            }
+        }
         public bool IsValid
         {
             get
@@ -71,12 +113,22 @@ namespace ArthsAppProject.ViewModels
         {
             _username.Validations.Add(new EmailRule<string>
             {
-                ValidationMessage = "The username must be an email."
+                ValidationMessage = "Votre identifiant doit être une adresse email."
             });
 
             _password.Validations.Add(new IsNotNullOrEmptyRule<string>
             {
-                ValidationMessage = "A password is required."
+                ValidationMessage = "Un mot de passe est requis."
+            });
+
+            _firstname.Validations.Add(new IsNotNullOrEmptyRule<string>
+            {
+                ValidationMessage = "Veuillez saisir votre prénom."
+            });
+
+            _lastname.Validations.Add(new IsNotNullOrEmptyRule<string>
+            {
+                ValidationMessage = "Veuillez saisir votre nom."
             });
         }
 
@@ -90,7 +142,7 @@ namespace ArthsAppProject.ViewModels
             }
             set
             {
-                selectedPainArea = value;   
+                selectedPainArea = value;
             }
         }
 
@@ -102,13 +154,14 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
-        public NewUserViewModel(INavigationService navigationService, IPageDialogService dialogService) : base (navigationService)
+        public NewUserViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
             _dialogService = dialogService;
             _navigationService = navigationService;
-            SubmitCommand = new DelegateCommand(OnSubmit);
             _username = new ValidatableObject<string>();
             _password = new ValidatableObject<string>();
+            _lastname = new ValidatableObject<string>();
+            _firstname = new ValidatableObject<string>();
 
             AddValidations();
         }
@@ -117,32 +170,48 @@ namespace ArthsAppProject.ViewModels
         {
             IsValid = true;
             bool isValid = Validate();
+            bool userExist = false;
 
             if (isValid)
             {
-                User user = new User(_username.Value, _password.Value, selectedPainArea);
-                App.Database.SaveUserAsync(user);
-                _navigationService.NavigateAsync("Login");
+                User user = App.Database.GetUserByLogin(_username.Value);
+                if(user == null)
+                {
+                    user = new User(_username.Value, _password.Value, _lastname.Value, _firstname.Value, _birthDate, selectedPainArea);
+                    App.Database.SaveUserAsync(user);
+                    _navigationService.NavigateAsync("ConfirmADD");
+                }
+                else
+                {
+                    _dialogService.DisplayAlertAsync("Erreur", "Cet email est déjà associé à un compte.", "Ok");
+                }
             }
-
-
         }
 
         private bool Validate()
         {
             bool isValidUser = ValidateUserName();
             bool isValidPassword = ValidatePassword();
-            return isValidUser && isValidPassword;
+            bool isValidFirstname = ValidateFirstname();
+            bool isValidLastname = ValidateLastname();
+            return isValidUser && isValidPassword && isValidFirstname && isValidLastname;
         }
 
         private bool ValidateUserName()
         {
             return _username.Validate();
         }
-
         private bool ValidatePassword()
         {
             return _password.Validate();
+        }
+        private bool ValidateFirstname()
+        {
+            return _firstname.Validate();
+        }
+        private bool ValidateLastname()
+        {
+            return _lastname.Validate();
         }
 
 

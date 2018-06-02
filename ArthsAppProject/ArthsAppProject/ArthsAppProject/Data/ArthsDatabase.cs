@@ -13,7 +13,7 @@ namespace ArthsAppProject
 		public ArthsDatabase(string dbPath)
         {
 			admin = new User();
-			admin.Login_u = "test";
+			admin.Login_u = "test@hotmail.fr";
             admin.Pass_u = Hash.HashSHA512("test");
 
             database = new SQLiteAsyncConnection(dbPath);
