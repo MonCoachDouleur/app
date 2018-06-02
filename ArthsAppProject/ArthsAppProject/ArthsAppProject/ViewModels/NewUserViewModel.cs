@@ -116,9 +116,9 @@ namespace ArthsAppProject.ViewModels
                 ValidationMessage = "Votre identifiant doit être une adresse email."
             });
 
-            _password.Validations.Add(new IsNotNullOrEmptyRule<string>
+            _password.Validations.Add(new AtLeast6CharacterRule<string>
             {
-                ValidationMessage = "Un mot de passe est requis."
+                ValidationMessage = "Votre mot de passe doit faire au moins 6 caractères."
             });
 
             _firstname.Validations.Add(new IsNotNullOrEmptyRule<string>

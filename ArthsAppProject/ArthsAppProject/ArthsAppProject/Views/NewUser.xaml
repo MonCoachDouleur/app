@@ -29,7 +29,7 @@
                 <Frame BackgroundColor="DodgerBlue" HasShadow="false">
                     <StackLayout Orientation="Vertical" Spacing="10">
                         <Label Text="Adresse email" />
-                        <Entry Placeholder="Identifiant" Text="{Binding Username.Value, Mode=TwoWay}" TextColor="Black" Keyboard="Email" PlaceholderColor="White" HeightRequest="40">
+                        <Entry Placeholder="Adresse email" Text="{Binding Username.Value, Mode=TwoWay}" TextColor="Black" Keyboard="Email" PlaceholderColor="White" HeightRequest="40">
                             <Entry.Style>
                                 <OnPlatform x:TypeArguments="Style">
                                     <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
@@ -47,7 +47,7 @@
                         <Label Text="{Binding Username.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
 
                         <Label Text="Mot de passe" />
-                        <Entry IsPassword="true" Placeholder="Password" PlaceholderColor="White" Text="{Binding Password.Value, Mode=TwoWay}" HeightRequest="40" TextColor="Black" >
+                        <Entry IsPassword="true" Placeholder="Mot de passe" PlaceholderColor="White" Text="{Binding Password.Value, Mode=TwoWay}" HeightRequest="40" TextColor="Black" >
                             <Entry.Style>
                                 <OnPlatform x:TypeArguments="Style">
                                     <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
@@ -82,7 +82,7 @@
                         </Entry>
                         <Label Text="{Binding Lastname.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
 
-                        <Label Text="Prenom" />
+                        <Label Text="Prénom" />
                         <Entry Placeholder="Prénom" Text="{Binding Firstname.Value, Mode=TwoWay}" TextColor="Black" Keyboard="Text" PlaceholderColor="White" HeightRequest="40">
                             <Entry.Style>
                                 <OnPlatform x:TypeArguments="Style">
