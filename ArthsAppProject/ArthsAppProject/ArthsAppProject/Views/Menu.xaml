@@ -8,10 +8,10 @@
         <Grid>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Padding="0,50,0,0" >
+            <Grid Grid.Row="0" Padding="0,10,0,0" >
                 <StackLayout>
                     <Label Text="Menu" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="Blue" Font="40">
                         <Label.FontFamily>
@@ -23,7 +23,7 @@
                         </Label.FontFamily>
                     </Label>
                     <BoxView           
-             WidthRequest="150"
+             WidthRequest="100"
              HeightRequest="4"
              VerticalOptions="Center" 
              HorizontalOptions="Center" 
@@ -32,9 +32,9 @@
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="110"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -50,22 +50,22 @@
                         <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="Arth.png" Grid.Row="1" Grid.Column="0" >
+                <Image Source="Ma_Douleur" Grid.Row="1" Grid.Column="0" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="Arth.png" Grid.Row="1" Grid.Column="1" >
+                <Image Source="Rdv.png" Grid.Row="1" Grid.Column="1" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="Arth.png" Grid.Row="2" Grid.Column="0" >
+                <Image Source="Rapport.png" Grid.Row="2" Grid.Column="0" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="Arth.png" Grid.Row="2" Grid.Column="1" >
+                <Image Source="faq.png" Grid.Row="2" Grid.Column="1" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
                     </Image.GestureRecognizers>
