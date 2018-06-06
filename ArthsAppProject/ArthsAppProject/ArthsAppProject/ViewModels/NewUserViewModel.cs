@@ -17,7 +17,6 @@ namespace ArthsAppProject.ViewModels
 {
     public class NewUserViewModel : AppMapViewModelBase
     {
-        public Action DisplayInvalidLoginPrompt;
         public ICommand SubmitCommand => new Command(() => OnSubmit());
         public ICommand ValidateUserNameCommand => new Command(() => ValidateUserName());
         public ICommand ValidatePasswordCommand => new Command(() => ValidatePassword());
@@ -28,6 +27,19 @@ namespace ArthsAppProject.ViewModels
         private INavigationService _navigationService;
 
         private bool _isValid;
+
+        public NewUserViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
+        {
+            _dialogService = dialogService;
+            _navigationService = navigationService;
+            _username = new ValidatableObject<string>();
+            _password = new ValidatableObject<string>();
+            _lastname = new ValidatableObject<string>();
+            _firstname = new ValidatableObject<string>();
+
+            AddValidations();
+        }
+
         private ValidatableObject<string> _username;
         public ValidatableObject<string> Username
         {
@@ -38,7 +50,6 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 _username = value;
-
                 RaisePropertyChanged(() => Username);
             }
         }
@@ -66,7 +77,6 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 _firstname = value;
-
                 RaisePropertyChanged(() => Firstname);
             }
         }
@@ -80,7 +90,6 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 _lastname = value;
-
                 RaisePropertyChanged(() => Lastname);
             }
         }
@@ -109,28 +118,7 @@ namespace ArthsAppProject.ViewModels
                 RaisePropertyChanged(() => IsValid);
             }
         }
-        private void AddValidations()
-        {
-            _username.Validations.Add(new EmailRule<string>
-            {
-                ValidationMessage = "Votre identifiant doit être une adresse email."
-            });
-
-            _password.Validations.Add(new AtLeast6CharacterRule<string>
-            {
-                ValidationMessage = "Votre mot de passe doit faire au moins 6 caractères."
-            });
-
-            _firstname.Validations.Add(new NameRule<string>
-            {
-                ValidationMessage = "Veuillez saisir votre prénom."
-            });
-
-            _lastname.Validations.Add(new NameRule<string>
-            {
-                ValidationMessage = "Veuillez saisir votre nom."
-            });
-        }
+        
 
         private PainAreaEnum selectedPainArea;
 
@@ -154,16 +142,27 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
-        public NewUserViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
+        private void AddValidations()
         {
-            _dialogService = dialogService;
-            _navigationService = navigationService;
-            _username = new ValidatableObject<string>();
-            _password = new ValidatableObject<string>();
-            _lastname = new ValidatableObject<string>();
-            _firstname = new ValidatableObject<string>();
+            _username.Validations.Add(new EmailRule<string>
+            {
+                ValidationMessage = "Votre identifiant doit être une adresse email."
+            });
 
-            AddValidations();
+            _password.Validations.Add(new AtLeast6CharacterRule<string>
+            {
+                ValidationMessage = "Votre mot de passe doit faire au moins 6 caractères."
+            });
+
+            _firstname.Validations.Add(new NameRule<string>
+            {
+                ValidationMessage = "Veuillez saisir votre prénom."
+            });
+
+            _lastname.Validations.Add(new NameRule<string>
+            {
+                ValidationMessage = "Veuillez saisir votre nom."
+            });
         }
 
         private void OnSubmit()
