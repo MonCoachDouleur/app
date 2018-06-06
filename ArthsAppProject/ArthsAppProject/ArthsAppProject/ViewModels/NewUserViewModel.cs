@@ -121,12 +121,12 @@ namespace ArthsAppProject.ViewModels
                 ValidationMessage = "Votre mot de passe doit faire au moins 6 caractères."
             });
 
-            _firstname.Validations.Add(new IsNotNullOrEmptyRule<string>
+            _firstname.Validations.Add(new NameRule<string>
             {
                 ValidationMessage = "Veuillez saisir votre prénom."
             });
 
-            _lastname.Validations.Add(new IsNotNullOrEmptyRule<string>
+            _lastname.Validations.Add(new NameRule<string>
             {
                 ValidationMessage = "Veuillez saisir votre nom."
             });
@@ -170,7 +170,6 @@ namespace ArthsAppProject.ViewModels
         {
             IsValid = true;
             bool isValid = Validate();
-            bool userExist = false;
 
             if (isValid)
             {
