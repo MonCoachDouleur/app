@@ -6,16 +6,32 @@
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.Exercises"
-    Title="Exercises">
+    Title="Exercises" 
+    BackgroundColor="Azure">
+    <RelativeLayout>
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Source="My_Activity.jpg" Grid.Row="0" Aspect="Fill"/>
+            <Grid Grid.Row="1">
+                <!--   <StackLayout x:Name="layout" Orientation="Horizontal" Grid.Row="0" Spacing="0">
+                    <Image Source="My_Exos.jpg" Aspect="Fill" HorizontalOptions="Start" VerticalOptions="FillAndExpand"></Image>
+                    <Button BackgroundColor="Gray" Text="Consulter les exercices effectués" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                </StackLayout>-->
+                <StackLayout x:Name="layout" Orientation="Vertical" Grid.Row="0" Spacing="20" Margin="5,40,5,0">
+                    <Image Source="My_Exos_01.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
+                    <Image Source="My_Exos_02.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
+                    <Image Source="My_Exos_03.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
+                </StackLayout>
+                <!--  </Grid>-->
+            </Grid>
+        </Grid>
+    </RelativeLayout>
 
 
-
-	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-          <Label Text="Exercises" VerticalOptions="Center" HorizontalOptions="Center" />
-		          <Button Text="Simple Ex Form" Command="{Binding Path=NavigateCommand}" CommandParameter="SimpleExForm" />
-          <Button Text="Pain Ex Form" Command="{Binding Path=NavigateCommand}" CommandParameter="PainExForm" />
-	  </StackLayout>
-    
 
 </ContentPage>
 
