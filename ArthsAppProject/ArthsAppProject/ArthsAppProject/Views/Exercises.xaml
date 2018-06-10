@@ -17,16 +17,16 @@
             </Grid.RowDefinitions>
             <Image Source="My_Activity.jpg" Grid.Row="0" Aspect="Fill"/>
             <Grid Grid.Row="1">
-                <!--   <StackLayout x:Name="layout" Orientation="Horizontal" Grid.Row="0" Spacing="0">
-                    <Image Source="My_Exos.jpg" Aspect="Fill" HorizontalOptions="Start" VerticalOptions="FillAndExpand"></Image>
-                    <Button BackgroundColor="Gray" Text="Consulter les exercices effectués" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                </StackLayout>-->
-                <StackLayout x:Name="layout" Orientation="Vertical" Grid.Row="0" Spacing="20" Margin="5,40,5,0">
-                    <Image Source="My_Exos_01.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
-                    <Image Source="My_Exos_02.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
+                <StackLayout x:Name="layout" Orientation="Vertical" Grid.Row="0" Spacing="5" Margin="5,30,5,0">
+                    <Image Source="My_Exos_01.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    </Image>
+                    <Image Source="My_Exos_02.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="ADDExercice"  />
+                        </Image.GestureRecognizers>
+                    </Image>
                     <Image Source="My_Exos_03.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
                 </StackLayout>
-                <!--  </Grid>-->
             </Grid>
         </Grid>
     </RelativeLayout>

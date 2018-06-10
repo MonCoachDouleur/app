@@ -19,7 +19,8 @@ namespace ArthsAppProject
             database = new SQLiteAsyncConnection(dbPath);
             database.DropTableAsync<User>().Wait();
             database.CreateTableAsync<User>().Wait();
-
+            database.DropTableAsync<Exercise>().Wait();
+            database.CreateTableAsync<Exercise>().Wait();
             SaveUserAsync(admin);
         }
 
@@ -37,6 +38,10 @@ namespace ArthsAppProject
             }
         }
 
+        public int SaveUserAsync(Exercise exercise)
+        {
+                return database.InsertAsync(exercise).Result;
+        }
         public User GetUserAsync(int id)
         {
 			return database.Table<User>().Where(i => i.Id_u.Equals(id)).FirstOrDefaultAsync().Result;

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArthsAppProject.Views.ADDExercice"
+             BackgroundColor="Azure">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="My_Activity_01.jpg" Grid.Row="0" Aspect="Fill"/>
+                <Grid Grid.Row="1" Padding="0,10,0,0" >
+                    <Frame
+				BackgroundColor="DodgerBlue"
+				HasShadow="false">
+                    <StackLayout>
+                        <Label Text="Ajouter une activité d'endurance" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
+                        </Label>
+                        <BoxView           
+             WidthRequest="150"
+             HeightRequest="3"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="Blue"/>
+                        <Label />
+                        <Label Text="Choisir le type d'exercice :" />
+                            <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding TypeExosNames}" SelectedIndex="{Binding TypeExoSelected, Converter=IntEnum}" TextColor="White" />
+                        
+                        <Label Text="Choisir la durée d'exercice en minutes :" />
+                            <Entry Placeholder="Durée" Text="{Binding DurationExo}" TextColor="White" Keyboard="Text" PlaceholderColor="White" HeightRequest="40">
+                           
+                        </Entry>
+                        <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+                    </StackLayout>
+                    </Frame>
+            </Grid>
+                
+                </Grid>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
