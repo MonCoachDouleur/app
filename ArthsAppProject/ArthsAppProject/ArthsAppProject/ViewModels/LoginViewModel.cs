@@ -8,6 +8,7 @@ using ArthsAppProject.Infrastructure;
 using Prism.Services;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using Xamarin.Forms;
 
 namespace ArthsAppProject.ViewModels
 {
@@ -58,6 +59,14 @@ namespace ArthsAppProject.ViewModels
             {
                 if (user.Pass_u.Equals(Hash.HashSHA512(password)))
                 {
+                    if (App.Current.Properties.ContainsKey("login"))
+                    {
+                        App.Current.Properties["login"] = username;
+                    }
+                    else
+                    {
+                        App.Current.Properties.Add("login", username);
+                    }
                     _navigationService.NavigateAsync("/MasterDetail/NavigationPage/Menu");
                 }
                 else

@@ -63,11 +63,11 @@ namespace ArthsAppProject.ViewModels
 
         private void OnSubmit()
         {
-
-
-                Exercise exercise = new Exercise(typeExoSelected, durationExo);
-                    App.Database.SaveUserAsync(exercise);
-                    _navigationService.NavigateAsync("ConfirmADD");
+            var login = App.Current.Properties["login"] as string;
+            User user = App.Database.GetUserByLogin(login);
+            Exercise exercise = new Exercise(typeExoSelected, durationExo, user.Id_u);
+            App.Database.SaveExoAsync(exercise);   
+            _navigationService.NavigateAsync("Exercises");
                 
         }
     }

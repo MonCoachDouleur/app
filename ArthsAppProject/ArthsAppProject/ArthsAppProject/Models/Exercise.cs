@@ -9,15 +9,15 @@ namespace ArthsAppProject
         public int Id_exe { get; set; }
         public TypeExosEnum Name_exe { get; set; }
         public string Duration { get; set; }
-  //      public int Id_user;
+        public int Id_user;
 
         public Exercise() { }
 
-        public Exercise(TypeExosEnum typeExe, string duration)
+        public Exercise(TypeExosEnum typeExe, string duration, int id_user)
         {
             this.Name_exe = typeExe;
             this.Duration = duration;
-  //          this.Id_user = id_user;
+            this.Id_user = id_user;
         }
 
 

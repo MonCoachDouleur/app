@@ -38,7 +38,7 @@ namespace ArthsAppProject
             }
         }
 
-        public int SaveUserAsync(Exercise exercise)
+        public int SaveExoAsync(Exercise exercise)
         {
                 return database.InsertAsync(exercise).Result;
         }
