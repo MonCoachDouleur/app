@@ -19,6 +19,9 @@
             <Grid Grid.Row="1">
                 <StackLayout x:Name="layout" Orientation="Vertical" Grid.Row="0" Spacing="5" Margin="5,30,5,0">
                     <Image Source="My_Exos_01.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="ListExercices"  />
+                        </Image.GestureRecognizers>
                     </Image>
                     <Image Source="My_Exos_02.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Image.GestureRecognizers>

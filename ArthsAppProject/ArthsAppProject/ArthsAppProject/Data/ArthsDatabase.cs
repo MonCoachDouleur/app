@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using System.Security.Cryptography;
+using System.Linq;
 
 namespace ArthsAppProject
 {
@@ -52,6 +53,10 @@ namespace ArthsAppProject
 			return database.Table<User>().Where(i => i.Login_u.Equals(login)).FirstOrDefaultAsync().Result;
 		}
 
-
+      public List<Exercise> GetListExosAsync(int user_id)
+       {
+            string test = "SELECT * FROM Exercise";
+            return database.QueryAsync<Exercise>(test).Result.ToList();
+        }
     }
 }

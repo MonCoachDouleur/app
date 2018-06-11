@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CustomRenderer;assembly=CustomRenderer" 
+             x:Class="ArthsAppProject.Views.ListExercices">
+    <!-- <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+            <On Platform="Android, UWP" Value="0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="FromTemplate">
+            <ViewCell>
+                <ViewCell.View>
+                        <StackLayout Orientation="Horizontal" Spacing="10" >
+                            <Image Source="Arth.png" WidthRequest="75" HeightRequest="75" />
+                            <StackLayout>
+                                <Label Text ="{Binding Name_exe}" FontSize="Medium" TextColor="Blue" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text ="{Binding Duration}" FontSize="Medium" TextColor="Blue" />
+                            </StackLayout>
+                        </StackLayout>
+                </ViewCell.View>
+                
+            </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary> 
+        
+    </ContentPage.Resources>-->
+
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="My_Activity_01.jpg" Grid.Row="0" Aspect="Fill"/>
+                <Grid Grid.Row="1" Padding="0,10,0,0" >
+                    <Frame
+				BackgroundColor="DodgerBlue"
+				HasShadow="false">
+                        <StackLayout Spacing="10">
+                        <Label Text="Excercice effectués" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
+                        </Label>
+                        <BoxView           
+             WidthRequest="150"
+             HeightRequest="3"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="Blue"/>
+                        <Label />
+            <ListView x:Name="ListExos" HasUnevenRows="True" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Spacing="10" >
+                                    <Image Source="Arth.png" WidthRequest="75" HeightRequest="75" />
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text ="{Binding Name_exe}" FontSize="Medium" TextColor="Blue" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text ="18/02/2018" FontSize="Medium" TextColor="Blue"/>
+                                             <Label Text ="Durée :" FontSize="Medium" TextColor="Blue" />
+                                              <Label Text ="{Binding Duration}" FontSize="Medium" TextColor="Blue" />
+                                        </StackLayout>
+                                </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+                    </Frame>
+                </Grid>
+
+            </Grid>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
