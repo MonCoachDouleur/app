@@ -15,7 +15,7 @@
     <ScrollView>
         <StackLayout>
             <Label Text="Microcharts" TextColor="White" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
-            <forms:ChartView x:Name="chart" Chart="{Binding Chart}" />
+            <forms:ChartView x:Name="chart" Chart="{Binding Chart}" HeightRequest="350" />
         </StackLayout>
     </ScrollView>
 
