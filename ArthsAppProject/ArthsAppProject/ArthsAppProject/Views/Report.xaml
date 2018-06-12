@@ -3,6 +3,8 @@
 	xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.Report"
@@ -10,10 +12,13 @@
 
 
 
-	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-          <Label Text="Report" VerticalOptions="Center" HorizontalOptions="Center" />
-			  </StackLayout>
-    
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Microcharts" TextColor="White" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+            <forms:ChartView x:Name="chart" Chart="{Binding Chart}" />
+        </StackLayout>
+    </ScrollView>
+
 
 </ContentPage>
 
