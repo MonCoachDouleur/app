@@ -43,7 +43,7 @@
                 <Image Source="My_Activity_01.jpg" Grid.Row="0" Aspect="Fill"/>
                 <Grid Grid.Row="1" Padding="0,10,0,0" >
                     <Frame
-				BackgroundColor="DodgerBlue"
+				BackgroundColor="#87CEFA"
 				HasShadow="false">
                         <StackLayout Spacing="10">
                         <Label Text="Excercice effectués" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
@@ -53,7 +53,7 @@
              HeightRequest="3"
              VerticalOptions="Center" 
              HorizontalOptions="Center" 
-                        BackgroundColor="Blue"/>
+                        BackgroundColor="#FFFFFF"/>
                         <Label />
             <ListView x:Name="ListExos" HasUnevenRows="True" >
                 <ListView.ItemTemplate>
@@ -64,12 +64,12 @@
                                     <Image Source="Arth.png" WidthRequest="75" HeightRequest="75" />
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text ="{Binding Name_exe}" FontSize="Medium" TextColor="Blue" />
+                                                            <Label Text ="{Binding Name_exe}" FontSize="Medium" TextColor="#FFFFFF" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text ="18/02/2018" FontSize="Medium" TextColor="Blue"/>
-                                             <Label Text ="Durée :" FontSize="Medium" TextColor="Blue" />
-                                              <Label Text ="{Binding Duration}" FontSize="Medium" TextColor="Blue" />
+                                           <Label Text ="18/02/2018" FontSize="Medium" TextColor="#FFFFFF"/>
+                                           <Label Text ="Durée :" FontSize="Medium" TextColor="#FFFFFF" />
+                                           <Label Text ="{Binding Duration}" FontSize="Medium" TextColor="#FFFFFF" />
                                         </StackLayout>
                                 </StackLayout>
                                 </StackLayout>

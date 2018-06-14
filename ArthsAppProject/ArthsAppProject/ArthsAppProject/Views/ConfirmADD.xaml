@@ -18,8 +18,8 @@
                 <StackLayout
 					Orientation="Vertical"
 					Spacing="10">
-                    <Label Text="Vos informations ont bien été enregistrées" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" TextColor="White"/>
-                    <Label Text="Veuillez vous connecter" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" TextColor="White"/>
+                    <Label Text="Vos informations ont bien été enregistrées" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" TextColor="#87CEFA"/>
+                    <Label Text="Veuillez vous connecter" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" TextColor="#87CEFA"/>
                 </StackLayout>
                 <Button
 				x:Name="LoginButton"

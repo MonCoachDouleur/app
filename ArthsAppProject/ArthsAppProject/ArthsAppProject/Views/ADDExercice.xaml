@@ -14,7 +14,7 @@
                 <Image Source="My_Activity_01.jpg" Grid.Row="0" Aspect="Fill"/>
                 <Grid Grid.Row="1" Padding="0,10,0,0" >
                     <Frame
-				BackgroundColor="DodgerBlue"
+				BackgroundColor="#87CEFA"
 				HasShadow="false">
                     <StackLayout>
                         <Label Text="Ajouter une activité d'endurance" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
@@ -24,7 +24,7 @@
              HeightRequest="3"
              VerticalOptions="Center" 
              HorizontalOptions="Center" 
-                        BackgroundColor="Blue"/>
+                        BackgroundColor="#87CEFA"/>
                         <Label />
                         <Label Text="Choisir le type d'exercice :" />
                             <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding TypeExosNames}" SelectedIndex="{Binding TypeExoSelected, Converter=IntEnum}" TextColor="White" />
