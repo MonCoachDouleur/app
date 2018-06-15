@@ -13,7 +13,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Padding="0,10,0,0" >
                 <StackLayout>
-                    <Label Text="Menu" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="Blue" Font="40">
+                    <Label Text="Menu" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="#87CEFA" Font="40">
                         <Label.FontFamily>
                             <OnPlatform x:TypeArguments="x:String">
                                 <On Platform="iOS" Value="MarkerFelt-Thin" />
@@ -27,7 +27,7 @@
              HeightRequest="4"
              VerticalOptions="Center" 
              HorizontalOptions="Center" 
-                        BackgroundColor="Blue"/>
+                        BackgroundColor="#87CEFA"/>
                 </StackLayout>
             </Grid>
             <Grid Grid.Row="1">

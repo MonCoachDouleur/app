@@ -17,12 +17,11 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Padding="0,50,0,0" >
                 <StackLayout>
-                    <Label Text="Arth'App" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="Blue" Font="40">
+                    <Label Text="Arth'App" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="#87CEFA" Font="40">
                         <Label.FontFamily>
                             <OnPlatform x:TypeArguments="x:String">
                                 <On Platform="iOS" Value="MarkerFelt-Thin" />
                                 <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular" />
-                                <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster" />
                             </OnPlatform>
                         </Label.FontFamily>
                     </Label>
@@ -31,7 +30,7 @@
              HeightRequest="4"
              VerticalOptions="Center" 
              HorizontalOptions="Center" 
-                        BackgroundColor="Blue"/>
+                        BackgroundColor="#87CEFA"/>
                     <Label />
                 </StackLayout>
             </Grid>
@@ -41,8 +40,8 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <Button Text="S'enregistrer" BackgroundColor="Blue" TextColor="White"  VerticalOptions="Start" HeightRequest="50" Grid.Row="1" Margin="0,0,0,2" Command="{Binding Path=NavigateCommand}" CommandParameter="NewUser"/>
-                <Button Text="Se Connecter" BackgroundColor="Blue" TextColor="White"  VerticalOptions="Start" Grid.Row="2" HeightRequest="50" Margin="0,0,0,2" Command="{Binding Path=NavigateCommand}" CommandParameter="Login"/>
+                <Button Text="S'enregistrer" BackgroundColor="#87CEFA" TextColor="White"  VerticalOptions="Start" HeightRequest="50" Grid.Row="1" Margin="0,0,0,2" Command="{Binding Path=NavigateCommand}" CommandParameter="NewUser"/>
+                <Button Text="Se Connecter" BackgroundColor="#87CEFA" TextColor="White"  VerticalOptions="Start" Grid.Row="2" HeightRequest="50" Margin="0,0,0,2" Command="{Binding Path=NavigateCommand}" CommandParameter="Login"/>
             </Grid>
         </Grid>
     </RelativeLayout>

@@ -20,7 +20,7 @@
 				WidthRequest="300"
 				Source="Arth.png" />
             <Frame
-				BackgroundColor="DodgerBlue"
+				BackgroundColor="#87CEFA"
 				HasShadow="false">
                 <StackLayout
 					Orientation="Vertical"

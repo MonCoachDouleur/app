@@ -26,7 +26,7 @@
             <StackLayout Orientation="Vertical" Padding="5" Spacing="30">
                 <BoxView HeightRequest="10"/>
                 <Image HorizontalOptions="Center" WidthRequest="200" Source="Arth.png"/>
-                <Frame BackgroundColor="DodgerBlue" HasShadow="false">
+                <Frame BackgroundColor="#87CEFA" HasShadow="false">
                     <StackLayout Orientation="Vertical" Spacing="10">
                         <Label Text="Adresse email" />
                         <Entry Placeholder="Adresse email" Text="{Binding Username.Value, Mode=TwoWay}" TextColor="White" Keyboard="Email" PlaceholderColor="White" HeightRequest="40">
