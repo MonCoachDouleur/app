@@ -4,17 +4,60 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
+     xmlns:behaviors="clr-namespace:ArthsAppProject.Behaviors"
+    xmlns:converters="clr-namespace:ArthsAppProject.Converter"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.PainEvaluation"
-    Title="Pain Evaluation">
-
-
-
-	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-          <Label Text="PainEvaluation" VerticalOptions="Center" HorizontalOptions="Center" />
-		          <Button Text="Pain Evolution" Command="{Binding Path=NavigateCommand}" CommandParameter="PainEvolution" />
-	  </StackLayout>
-    
-
+    Title="Pain Evaluation"
+    BackgroundColor="Blue">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+            <converters:IntEnumConverter x:Key="IntEnum"/>
+            <Style x:Key="EntryStyle" TargetType="{x:Type Entry}">
+                <Setter Property="behaviors:LineColorBehavior.ApplyLineColor" Value="True" />
+                <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource BlackColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+    <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="5" Spacing="30">
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Source="My_Pain.jpg" Grid.Row="0" Aspect="Fill"/>
+            <Grid Grid.Row="1">
+                <Frame
+				BackgroundColor="DodgerBlue"
+				HasShadow="false">
+                    <StackLayout Spacing="10">
+                        <Label Text="Evaluer Ma douleur" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
+                        </Label>
+                        <BoxView           
+             WidthRequest="150"
+             HeightRequest="3"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="Blue"/>
+                        <Label />
+                        <Label Text="Choisir le niveau de douleur :" />
+                        <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding LevelPainName}" SelectedIndex="{Binding LevelPainSelected, Converter=IntEnum}" TextColor="White" />
+                        <Label Text="Circonstances de survenue ..." />
+                        <Entry Placeholder="Tapez ici" PlaceholderColor="White" Text="{Binding TextCirconstance}" HeightRequest="40" TextColor="White" >
+                        </Entry>
+                            <Label Text="Date de douleur" />
+                        <DatePicker x:Name="StartDatePicker" Format="dd/MM/yyyy" Date="{Binding DatePain}" TextColor="White" />
+                        <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
 

@@ -6,16 +6,35 @@
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.PainEvolution"
-    Title="Pain Evolution">
+    Title="Pain Evolution"
+    BackgroundColor="Blue">
+    <RelativeLayout>
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Source="My_Pain.jpg" Grid.Row="0" Aspect="Fill"/>
+            <Grid Grid.Row="1">
+                <Frame
+				BackgroundColor="DodgerBlue"
+				HasShadow="false">
+                    <StackLayout Spacing="10">
+                        <Label Text="Suivre l'évolution de sa douleur" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
+                        </Label>
+                        <BoxView           
+             WidthRequest="150"
+             HeightRequest="3"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="Blue"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </Grid>
+    </RelativeLayout>
 
-
-
-	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-          <Label Text="PainEvolution" VerticalOptions="Center" HorizontalOptions="Center" />
-		          <Button Text="Pain Evaluation" Command="{Binding Path=NavigateCommand}" CommandParameter="PainEvaluation" />
-          <Button Text="My Pain" Command="{Binding Path=NavigateCommand}" CommandParameter="MyPain" />
-	  </StackLayout>
-    
 
 </ContentPage>
 

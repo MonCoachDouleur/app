@@ -52,7 +52,7 @@
                 </Image>
                 <Image Source="Ma_Douleur" Grid.Row="1" Grid.Column="0" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                        <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="PainEvaluation" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="Rdv.png" Grid.Row="1" Grid.Column="1" >
