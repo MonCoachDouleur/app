@@ -11,7 +11,18 @@ namespace ArthsAppProject
         public string DocSpeciality { get; set; }
         public string DocEmail { get; set; }
         public string DocPhone { get; set; }
-        public User user;
+        public int user_id;
 
+        public Doctor(string name, string adresse, string speciality, string email, String phone, int userId)
+        {
+            this.Name_doc = name;
+            this.DocAdress = adresse;
+            this.DocSpeciality = speciality;
+            this.DocEmail = email;
+            this.DocPhone = phone;
+            this.user_id = userId;
+        }
+
+        public Doctor() { }
     }
 }

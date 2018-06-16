@@ -22,6 +22,8 @@ namespace ArthsAppProject
             database.CreateTableAsync<User>().Wait();
             database.DropTableAsync<Exercise>().Wait();
             database.CreateTableAsync<Exercise>().Wait();
+            database.DropTableAsync<Doctor>().Wait();
+            database.CreateTableAsync<Doctor>().Wait();
             SaveUserAsync(admin);
         }
 
@@ -42,6 +44,11 @@ namespace ArthsAppProject
         public int SaveExoAsync(Exercise exercise)
         {
                 return database.InsertAsync(exercise).Result;
+        }
+
+        public int SaveAsync(Object tableName)
+        {
+            return database.InsertAsync(tableName).Result;
         }
         public User GetUserAsync(int id)
         {
