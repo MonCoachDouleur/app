@@ -24,6 +24,17 @@ namespace ArthsAppProject.ViewModels
         private IPageDialogService _dialogService;
         private INavigationService _navigationService;
         private TypePainEnum levelPainSelected;
+        private int painValueSelected;
+
+        public int PainValue
+        {
+            get { return painValueSelected; }
+            set
+            {
+                painValueSelected = value;
+                RaisePropertyChanged(() => PainValue);
+            }
+        }
 
         public PainEvaluationViewModel(INavigationService navigationService, IPageDialogService dialogService) : base (navigationService)
         {
@@ -78,7 +89,13 @@ namespace ArthsAppProject.ViewModels
 
         private void OnSubmit()
         {
-               _navigationService.NavigateAsync("PainEvolution");
+            Pain pain = new Pain(datePain, painValueSelected);
+            var login = App.Current.Properties["login"] as string;
+            User user = App.Database.GetUserByLogin(login);
+            //user.painList.Add(pain);
+            App.Database.SaveUserAsync(user);
+            // TODO Sauvegarder l'evaluation
+            _navigationService.NavigateAsync("PainEvolution");
 
         }
     }

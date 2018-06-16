@@ -45,10 +45,17 @@
                         BackgroundColor="Blue"/>
                         <Label />
                         <Label Text="Choisir le niveau de douleur :" />
-                        <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding LevelPainName}" SelectedIndex="{Binding LevelPainSelected, Converter=IntEnum}" TextColor="White" />
-                        <Label Text="Circonstances de survenue ..." />
-                        <Entry Placeholder="Tapez ici" PlaceholderColor="White" Text="{Binding TextCirconstance}" HeightRequest="40" TextColor="White" >
-                        </Entry>
+                                <Slider x:Name="slider" Minimum="0" Maximum="10" Value="{Binding PainValue}"  />
+                                <Label Text="0 : Aucune douleur - 10 : Insoutenable" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                                <Label x:Name="displayLabel"
+               Text="{Binding Source={x:Reference slider},
+                              Path=Value,
+                              StringFormat='Le niveau de douleur est de {0:F0}/10'}"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand" />
+                                <Label Text="Circonstances de survenue ..." />
+                                <Editor IsSpellCheckEnabled="true" Text="{Binding TextCirconstance}" HeightRequest="100" TextColor="White" >
+                        </Editor>
                             <Label Text="Date de douleur" />
                         <DatePicker x:Name="StartDatePicker" Format="dd/MM/yyyy" Date="{Binding DatePain}" TextColor="White" />
                         <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
