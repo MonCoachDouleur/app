@@ -8,6 +8,9 @@ namespace ArthsAppProject.Models
     {
         Sport,
         Marche,
-        Courts
+        Course,
+        Natation,
+        Cyclisme,
+        Yoga
     };
 }
