@@ -11,7 +11,7 @@ namespace ArthsAppProject
         public string DocSpeciality { get; set; }
         public string DocEmail { get; set; }
         public string DocPhone { get; set; }
-        public int user_id;
+        public int user_id { get; set; }
 
         public Doctor(string name, string adresse, string speciality, string email, String phone, int userId)
         {

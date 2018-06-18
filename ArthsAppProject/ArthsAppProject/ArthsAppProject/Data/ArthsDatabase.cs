@@ -58,7 +58,12 @@ namespace ArthsAppProject
 			return database.Table<User>().Where(i => i.Login_u.Equals(login)).FirstOrDefaultAsync().Result;
 		}
 
-      public List<Exercise> GetListExosAsync(int user_id)
+        public Doctor GetDoctorByUserId(int userId)
+        {
+            return database.Table<Doctor>().Where(i => i.user_id.Equals(userId)).FirstOrDefaultAsync().Result;
+        }
+
+        public List<Exercise> GetListExosAsync(int user_id)
        {
             string test = "SELECT * FROM Exercise";
             return database.QueryAsync<Exercise>(test).Result.ToList();
