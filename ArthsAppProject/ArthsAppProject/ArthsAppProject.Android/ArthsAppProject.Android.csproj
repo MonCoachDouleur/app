@@ -153,9 +153,6 @@
     <AndroidResource Include="Resources\drawable\My_Pain.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\drawable\Medecin.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\Doctor.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

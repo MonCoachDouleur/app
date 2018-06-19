@@ -6,6 +6,9 @@ using Prism.Navigation;
 using ArthsAppProject.Infrastructure;
 using System.ComponentModel;
 using Prism.Services;
+using System.Windows.Input;
+using Xamarin.Forms;
+
 namespace ArthsAppProject.ViewModels
 {
     class MyAccountViewModel : AppMapViewModelBase
@@ -23,9 +26,7 @@ namespace ArthsAppProject.ViewModels
             var login = App.Current.Properties["login"] as string;
             User = App.Database.GetUserByLogin(login);
             Doctor = App.Database.GetDoctorByUserId(User.Id_u);
-
-        }
-
+        }    
 
     }
 }
