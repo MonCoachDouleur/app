@@ -13,7 +13,7 @@
                     <TextCell Text="Login " Detail="{Binding User.Login_u}" TextColor="#87CEFA"/>
                     <TextCell Text="Date de naissance " Detail="{Binding User.BirthDate_u}" TextColor="#87CEFA"/>
                     <TextCell Text="Zone de la douleur " Detail="{Binding User.PainArea}" TextColor="#87CEFA" />
-                    </TableSection>
+                </TableSection>
              </TableRoot>
             </TableView>
             <Button Text="Modifier Informations user" TextColor="White" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding Path=NavigateCommand}" CommandParameter="UpdateAccount"/>
@@ -28,8 +28,7 @@
                     </TableSection>
                 </TableRoot>
             </TableView>
-            <Button Text="Modifier Informations Médecin" TextColor="White" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding Path=NavigateCommand}" CommandParameter="MyAccount"/>
-
+            <Button Text="Modifier Informations Médecin" TextColor="White" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding Path=NavigateCommand}" CommandParameter="UpdateDoctor"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

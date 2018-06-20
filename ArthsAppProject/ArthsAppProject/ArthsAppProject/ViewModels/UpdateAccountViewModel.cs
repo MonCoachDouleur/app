@@ -158,7 +158,13 @@ namespace ArthsAppProject.ViewModels
             bool isValid = Validate();
             if (isValid)
             {
-                _navigationService.NavigateAsync("ConfirmADD");
+                User.Login_u = _username.Value;
+                User.Firstname_u = _firstname.Value;
+                User.PainArea = selectedPainArea;
+                User.Lastname_u = _lastname.Value;
+                App.Database.SaveUserAsync(User);
+                _dialogService.DisplayAlertAsync("Mon Compte", "Vos informations ont bien été enregistrées", "Ok");
+                _navigationService.NavigateAsync("MyAccount");
             }
         }
 

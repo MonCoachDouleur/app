@@ -27,6 +27,5 @@ namespace ArthsAppProject.ViewModels
             User = App.Database.GetUserByLogin(login);
             Doctor = App.Database.GetDoctorByUserId(User.Id_u);
         }    
-
     }
 }
