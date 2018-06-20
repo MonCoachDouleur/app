@@ -131,6 +131,13 @@ namespace ArthsAppProject.ViewModels
             bool isValid = Validate();
             if (isValid)
             {
+                doctor.DocEmail = _username.Value;
+                doctor.Name_doc = _lastname.Value;
+                doctor.DocAdress = _hospital.Value;
+                doctor.DocSpeciality = _speciality.Value;
+                doctor.DocPhone = _phoneNumber.Value;
+                App.Database.UpdateAsync(doctor);
+                _dialogService.DisplayAlertAsync("Médecin traitant", "Vos onformations ont bien été enregistrées", "Ok");
                 _navigationService.NavigateAsync("MyAccount");
             }
         }

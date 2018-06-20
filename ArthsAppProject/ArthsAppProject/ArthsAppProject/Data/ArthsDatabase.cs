@@ -48,6 +48,11 @@ namespace ArthsAppProject
         {
             return database.InsertAsync(tableName).Result;
         }
+
+        public int UpdateAsync(Object tableName)
+        {
+            return database.UpdateAsync(tableName).Result;
+        }
         public User GetUserAsync(int id)
         {
 			return database.Table<User>().Where(i => i.Id_u.Equals(id)).FirstOrDefaultAsync().Result;
