@@ -165,23 +165,23 @@ namespace ArthsAppProject.ViewModels
             });
         }
 
-        private void OnSubmit()
+        private async void OnSubmit()
         {
             IsValid = true;
             bool isValid = Validate();
 
             if (isValid)
             {
-                User user = App.Database.GetUserByLogin(_username.Value);
+                User user = await App.Database.userRepo.Get(predicate: x => x.Login_u.Equals(_username.Value));
                 if(user == null)
                 {
                     user = new User(_username.Value, _password.Value, _lastname.Value, _firstname.Value, _birthDate, selectedPainArea);
-                    App.Database.SaveUserAsync(user);
-                    _navigationService.NavigateAsync("ConfirmADD");
+                    App.Database.userRepo.Insert(user);
+                    await _navigationService.NavigateAsync("ConfirmADD");
                 }
                 else
                 {
-                    _dialogService.DisplayAlertAsync("Erreur", "Cet email est déjà associé à un compte.", "Ok");
+                    await _dialogService.DisplayAlertAsync("Erreur", "Cet email est déjà associé à un compte.", "Ok");
                 }
             }
         }

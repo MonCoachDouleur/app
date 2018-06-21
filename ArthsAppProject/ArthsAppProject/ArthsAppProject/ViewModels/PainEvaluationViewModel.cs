@@ -13,6 +13,7 @@ using ArthsAppProject.ViewModels.Base;
 using ArthsAppProject.ValidationRule;
 using Xamarin.Forms;
 using ArthsAppProject.Models;
+using ArthsAppProject.Helper;
 
 namespace ArthsAppProject.ViewModels
 {
@@ -87,16 +88,18 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
-        private void OnSubmit()
+        private async void OnSubmit()
         {
             Pain pain = new Pain(datePain, painValueSelected);
-            var login = App.Current.Properties["login"] as string;
-            User user = App.Database.GetUserByLogin(login);
-            //user.painList.Add(pain);
-            App.Database.SaveUserAsync(user);
-            // TODO Sauvegarder l'evaluation
-            _navigationService.NavigateAsync("PainEvolution");
 
+            int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
+            User user = await App.Database.userRepo.GetWithChild(idUser);
+
+            App.Database.painRepo.Insert(pain);
+            user.painList.Add(pain);
+
+            App.Database.userRepo.UpdateWithChild(user);
+            await _navigationService.NavigateAsync("PainEvolution");
         }
     }
 }

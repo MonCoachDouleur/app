@@ -9,6 +9,7 @@ using Prism.Services;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using Xamarin.Forms;
+using ArthsAppProject.Helper;
 
 namespace ArthsAppProject.ViewModels
 {
@@ -44,12 +45,12 @@ namespace ArthsAppProject.ViewModels
         {
             _dialogService = dialogService;
             _navigationService = navigationService;
-            SubmitCommand = new DelegateCommand(OnSubmit);
+            SubmitCommand = new DelegateCommand(OnSubmitAsync);
         }
 
-        private void OnSubmit()
+        private async void OnSubmitAsync()
         {
-            User user = App.Database.GetUserByLogin(username);
+            User user = await App.Database.userRepo.Get(predicate: x => x.Login_u.Equals(username));
 
             if (user == null)
             {
@@ -59,15 +60,8 @@ namespace ArthsAppProject.ViewModels
             {
                 if (user.Pass_u.Equals(Hash.HashSHA512(password)))
                 {
-                    if (App.Current.Properties.ContainsKey("login"))
-                    {
-                        App.Current.Properties["login"] = username;
-                    }
-                    else
-                    {
-                        App.Current.Properties.Add("login", username);
-                    }
-                    _navigationService.NavigateAsync("/MasterDetail/NavigationPage/Menu");
+                    PropertiesHelper.SetUser(user);
+                    await _navigationService.NavigateAsync("/MasterDetail/NavigationPage/Menu");
                 }
                 else
                 {

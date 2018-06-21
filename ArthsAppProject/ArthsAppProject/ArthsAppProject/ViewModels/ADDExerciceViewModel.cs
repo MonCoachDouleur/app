@@ -13,13 +13,14 @@ using ArthsAppProject.ViewModels.Base;
 using ArthsAppProject.ValidationRule;
 using Xamarin.Forms;
 using ArthsAppProject.Models;
+using ArthsAppProject.Helper;
 
 namespace ArthsAppProject.ViewModels
 {
     public class ADDExerciceViewModel : AppMapViewModelBase, INotifyPropertyChanged
     {
 
-        public ICommand SubmitCommand => new Command(() => OnSubmit());
+        public ICommand SubmitCommand => new Command(() => OnSubmitAsync());
 
         public event PropertyChangedEventHandler PropertyChanged;
         private IPageDialogService _dialogService;
@@ -61,13 +62,13 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
-        private void OnSubmit()
+        private async void OnSubmitAsync()
         {
-            var login = App.Current.Properties["login"] as string;
-            User user = App.Database.GetUserByLogin(login);
+            int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
+            User user = await App.Database.userRepo.Get(idUser);
             Exercise exercise = new Exercise(typeExoSelected, durationExo, user.Id_u);
-            App.Database.SaveExoAsync(exercise);   
-            _navigationService.NavigateAsync("Exercises");
+            App.Database.exerciseRepo.Insert(exercise);   
+            await _navigationService.NavigateAsync("Exercises");
                 
         }
     }

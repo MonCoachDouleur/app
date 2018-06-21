@@ -15,7 +15,7 @@ namespace ArthsAppProject.Views
 		public ListExercices ()
 		{
 			InitializeComponent ();
-            ListExos.ItemsSource = new Exercise().GetListAsync();
+            ListExos.ItemsSource = new Exercise().GetListAsync().Result;
         }
 	}
 }

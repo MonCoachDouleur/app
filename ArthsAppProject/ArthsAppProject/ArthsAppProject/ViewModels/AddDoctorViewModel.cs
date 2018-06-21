@@ -12,13 +12,14 @@ using System.Linq;
 using ArthsAppProject.ViewModels.Base;
 using ArthsAppProject.ValidationRule;
 using Xamarin.Forms;
+using ArthsAppProject.Helper;
 
 namespace ArthsAppProject.ViewModels
 {
     public class AddDoctorViewModel : AppMapViewModelBase
     {
 
-        public ICommand SubmitCommand => new Command(() => OnSubmit());
+        public ICommand SubmitCommand => new Command(async () => await OnSubmitAsync());
 
         public ICommand ValidateUserNameCommand => new Command(() => ValidateUserName());
 
@@ -117,18 +118,18 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
-        private void OnSubmit()
+        private async System.Threading.Tasks.Task OnSubmitAsync()
         {
             IsValid = true;
             bool isValid = Validate();
             if (isValid)
             {
-                var login = App.Current.Properties["login"] as string;
-                User user = App.Database.GetUserByLogin(login);
+                int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
+                User user = await App.Database.userRepo.Get(idUser);
                 Doctor doctor = new Doctor(this._lastname.Value, this._hospital.Value, this._speciality.Value, this._username.Value, this._phoneNumber.Value, user.Id_u);
-                App.Database.SaveAsync(doctor);
-                _dialogService.DisplayAlertAsync("Ajouter un Médecin", "Le médecin a été bien ajouté.", "Ok");
-                _navigationService.NavigateAsync("ConfirmADD");
+                App.Database.doctorRepo.Insert(doctor);
+                await _dialogService.DisplayAlertAsync("Ajouter un Médecin", "Le médecin a été bien ajouté.", "Ok");
+                await _navigationService.NavigateAsync("ConfirmADD");
             }
         }
 

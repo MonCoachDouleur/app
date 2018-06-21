@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ArthsAppProject.Helper;
 using ArthsAppProject.Models;
 using SQLite;
 namespace ArthsAppProject
@@ -22,13 +23,9 @@ namespace ArthsAppProject
             this.Id_user = id_user;
         }
 
-        public List<Exercise> GetListAsync()
+        public async Task<List<Exercise>> GetListAsync()
         {
-
-            var login = App.Current.Properties["login"] as string;
-            User user = App.Database.GetUserByLogin(login);
-            List<Exercise> lisExos = new List<Exercise>();
-            return App.Database.GetListExosAsync(user.Id_u);
+            return await App.Database.exerciseRepo.GetAll();
         }
 
 
