@@ -42,7 +42,7 @@
                 </Grid.ColumnDefinitions>
                 <Image Source="Mon_compte.png" Grid.Row="0" Grid.Column="0">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                        <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="MyAccount" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="Exos.png" Grid.Row="0" Grid.Column="1">
@@ -57,7 +57,7 @@
                 </Image>
                 <Image Source="Rdv.png" Grid.Row="1" Grid.Column="1" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                        <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="AddDoctor" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="Rapport.png" Grid.Row="2" Grid.Column="0" >

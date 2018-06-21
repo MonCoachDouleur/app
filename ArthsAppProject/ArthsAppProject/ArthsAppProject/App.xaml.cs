@@ -68,7 +68,9 @@ namespace ArthsAppProject
             containerRegistry.RegisterForNavigation<Views.Menu, MenuViewModel>();
             containerRegistry.RegisterForNavigation<ADDExercice, ADDExerciceViewModel>();
             containerRegistry.RegisterForNavigation<ListExercices, ListExercicesViewModel>();
-            
+            containerRegistry.RegisterForNavigation<MyAccount, MyAccountViewModel>();
+            containerRegistry.RegisterForNavigation<UpdateAccount, UpdateAccountViewModel>();
+
         }
     }
 }

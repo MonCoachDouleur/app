@@ -202,7 +202,7 @@ namespace ArthsAppProject.ViewModels
                ValidationMessage = "Veuillez saisir votre spécialité."
             });
 
-            _phoneNumber.Validations.Add(new NameRule<string>
+            _phoneNumber.Validations.Add(new PhoneNumberRule<string>
             {
                 ValidationMessage = "Veuillez saisir un numéro de téléphone."
             });

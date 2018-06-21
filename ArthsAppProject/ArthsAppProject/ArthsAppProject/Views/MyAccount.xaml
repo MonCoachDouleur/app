@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArthsAppProject.Views.MyAccount"
+             BackgroundImage="ArthImage.jpg">
+    <ContentPage.Content>
+        <StackLayout>
+        <TableView Intent="Data">
+            <TableRoot>
+                <TableSection Title="Informations Utilisateur">
+                    <TextCell Text="Nom " Detail="{Binding User.Firstname_u}" TextColor="#87CEFA"/>
+                    <TextCell Text="Prenom " Detail="{Binding User.Lastname_u}" TextColor="#87CEFA"/>
+                    <TextCell Text="Login " Detail="{Binding User.Login_u}" TextColor="#87CEFA"/>
+                    <TextCell Text="Date de naissance " Detail="{Binding User.BirthDate_u}" TextColor="#87CEFA"/>
+                    <TextCell Text="Zone de la douleur " Detail="{Binding User.PainArea}" TextColor="#87CEFA" />
+                </TableSection>
+             </TableRoot>
+            </TableView>
+            <Button Text="Modifier Informations user" TextColor="White" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding Path=NavigateCommand}" CommandParameter="UpdateAccount"/>
+            <TableView Intent="Data">
+                <TableRoot>
+                    <TableSection Title="Médecin traitant">
+                        <TextCell Text="Nom " Detail="{Binding Doctor.Name_doc}" TextColor="#87CEFA"/>
+                        <TextCell Text="Clinique " Detail="{Binding Doctor.DocAdress}" TextColor="#87CEFA"/>
+                        <TextCell Text="Spécialité " Detail="{Binding Doctor.DocSpeciality}" TextColor="#87CEFA" />
+                        <TextCell Text="Adresse Email " Detail="{Binding Doctor.DocEmail}" TextColor="#87CEFA"/>
+                        <TextCell Text="Téléphone " Detail="{Binding Doctor.DocPhone}" TextColor="#87CEFA"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button Text="Modifier Informations Médecin" TextColor="White" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding Path=NavigateCommand}" CommandParameter="UpdateDoctor"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

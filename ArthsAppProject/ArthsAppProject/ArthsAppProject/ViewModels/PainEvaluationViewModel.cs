@@ -21,7 +21,6 @@ namespace ArthsAppProject.ViewModels
     {
         public ICommand SubmitCommand => new Command(() => OnSubmit());
 
-        public event PropertyChangedEventHandler PropertyChanged;
         private IPageDialogService _dialogService;
         private INavigationService _navigationService;
         private TypePainEnum levelPainSelected;
@@ -49,7 +48,7 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 levelPainSelected = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("LevelPainSelected"));
+                RaisePropertyChanged(() => LevelPainSelected);
             }
         }
 

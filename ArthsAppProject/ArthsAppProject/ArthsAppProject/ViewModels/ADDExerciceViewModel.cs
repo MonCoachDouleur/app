@@ -22,7 +22,6 @@ namespace ArthsAppProject.ViewModels
 
         public ICommand SubmitCommand => new Command(() => OnSubmitAsync());
 
-        public event PropertyChangedEventHandler PropertyChanged;
         private IPageDialogService _dialogService;
         private INavigationService _navigationService;
         private TypeExosEnum typeExoSelected;
@@ -40,7 +39,7 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 typeExoSelected = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("TypeExoSelected"));
+                RaisePropertyChanged(() => TypeExoSelected);
             }
         }
 
@@ -58,7 +57,7 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 durationExo = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("DurationExo"));
+                RaisePropertyChanged(() => DurationExo);
             }
         }
 
