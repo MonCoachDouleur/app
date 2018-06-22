@@ -67,7 +67,7 @@
                 </Image>
                 <Image Source="faq.png" Grid.Row="2" Grid.Column="1" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="Image1" />
+                        <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="Questions" />
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>

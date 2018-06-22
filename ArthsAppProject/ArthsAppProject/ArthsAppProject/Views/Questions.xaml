@@ -8,12 +8,29 @@
     x:Class="ArthsAppProject.Views.Questions"
     Title="Questions">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
 
+            <Style TargetType="Button">
+                <Setter Property="BorderRadius" Value="10" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="WidthRequest" Value="150" />
+                <Setter Property="HeightRequest" Value="150" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Red" />
+            </Style>
 
-	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-          <Label Text="Questions" VerticalOptions="Center" HorizontalOptions="Center" />
-			  </StackLayout>
-    
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions = "Center">
+            <Button Text="Xaml Page" Clicked="OnXamlClicked" />
+            <Button Text="Code Page" Clicked="OnCodeClicked" />
+        </StackLayout>
+    </ContentPage.Content>
+
 
 </ContentPage>
 

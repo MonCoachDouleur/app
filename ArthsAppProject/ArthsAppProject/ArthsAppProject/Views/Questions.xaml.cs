@@ -1,3 +1,4 @@
+using System;
 using Xamarin.Forms;
 
 namespace ArthsAppProject.Views
@@ -7,6 +8,16 @@ namespace ArthsAppProject.Views
         public Questions()
         {
             InitializeComponent();
+        }
+        public void OnXamlClicked(object sender, EventArgs args)
+        {
+
+            Navigation.PushAsync(new XamlExample());
+        }
+        public void OnCodeClicked(object sender, EventArgs args)
+        {
+
+            Navigation.PushAsync(new CodeEaxmple());
         }
     }
 }
