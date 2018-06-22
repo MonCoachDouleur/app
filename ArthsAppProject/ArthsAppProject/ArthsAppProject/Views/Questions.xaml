@@ -26,8 +26,8 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout VerticalOptions = "Center">
-            <Button Text="Xaml Page" Clicked="OnXamlClicked" />
-            <Button Text="Code Page" Clicked="OnCodeClicked" />
+            <Button Text="Les questions fréquentes au sujet de l'arthrose" Clicked="OnXamlClicked" />
+            <Button Text="Mon application" Clicked="OnCodeClicked" />
         </StackLayout>
     </ContentPage.Content>
 

@@ -17,7 +17,7 @@ namespace ArthsAppProject.Views
         public void OnCodeClicked(object sender, EventArgs args)
         {
 
-            Navigation.PushAsync(new CodeEaxmple());
+            Navigation.PushAsync(new faq());
         }
     }
 }
