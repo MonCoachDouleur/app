@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ArthsAppProject.Views;
 using ArthsAppProject.ViewModels;
+using System;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ArthsAppProject
@@ -17,8 +18,10 @@ namespace ArthsAppProject
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
 
-        static ArthsDatabase database;
+		public static NavigationPage Navigation = null;
 
+        static ArthsDatabase database;
+        
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
@@ -34,20 +37,23 @@ namespace ArthsAppProject
                 return database;
             }
         }
-
+        
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("Hello");
+			await NavigationService.NavigateAsync("Hello");
+        }
+
+		public async void OnBackButtonPressed(object sender, EventArgs e)
+        {
+			await Navigation.PushAsync(new Views.Menu());
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<Hello, HelloViewModel>();
             containerRegistry.RegisterForNavigation<Login, LoginViewModel>();
             containerRegistry.RegisterForNavigation<NewUser, NewUserViewModel>();
-            containerRegistry.RegisterForNavigation<MasterDetail, MasterDetailViewModel>();
             containerRegistry.RegisterForNavigation<Home, HomeViewModel>();
             containerRegistry.RegisterForNavigation<Exercises, ExercisesViewModel>();
             containerRegistry.RegisterForNavigation<MyPain, MyPainViewModel>();

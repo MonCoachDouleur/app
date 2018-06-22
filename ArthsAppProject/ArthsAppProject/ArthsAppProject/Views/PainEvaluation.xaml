@@ -9,7 +9,7 @@
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.PainEvaluation"
     Title="Pain Evaluation"
-    BackgroundColor="Blue">
+    BackgroundColor="Blue" ControlTemplate="{StaticResource MainPageTemplate}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />

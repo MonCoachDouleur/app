@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
@@ -6,6 +6,45 @@
     <Application.Resources>
 
         <ResourceDictionary>
+
+        <ControlTemplate x:Key="MainPageTemplate">
+ 
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+ 
+          <!-- Begin Header -->
+          <StackLayout
+            Orientation="Vertical"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Spacing="0"
+            BackgroundColor="#87CEFA"
+            HeightRequest="100"
+            Grid.Column="0" Grid.Row="0">
+            <StackLayout.Padding>
+              <OnPlatform x:TypeArguments="Thickness"
+                            iOS="10, 10, 10, 10"
+                            Android="10, 10, 10, 10"
+                            WinPhone="10, 10, 10, 10" />
+            </StackLayout.Padding>
+            <!-- My header content to make my app the prettiest. -->
+            <Image Source="home_icon.png" Grid.Row="0" Grid.Column="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer TappedCallback="OnHomeButtonPressed" />
+                    </Image.GestureRecognizers>
+                </Image>
+          </StackLayout>
+          <!-- End Header -->
+           <!-- Begin Content -->
+          <ScrollView Grid.Column="0" Grid.Row="1">
+            <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+          </ScrollView>
+          <!-- End Content -->
+        </Grid>
+      </ControlTemplate>
 
             <!-- COLORS -->
             <Color x:Key="WhiteColor">#ffffff</Color>

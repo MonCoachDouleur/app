@@ -61,7 +61,7 @@ namespace ArthsAppProject.ViewModels
                 if (user.Pass_u.Equals(Hash.HashSHA512(password)))
                 {
                     PropertiesHelper.SetUser(user);
-                    await _navigationService.NavigateAsync("/MasterDetail/NavigationPage/Menu");
+                    await _navigationService.NavigateAsync("Menu");
                 }
                 else
                 {
