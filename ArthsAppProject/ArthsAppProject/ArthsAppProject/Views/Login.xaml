@@ -1,59 +1,61 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage 
-	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
-	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
+    xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.Login"
     BackgroundImage="ArthImage.jpg"
     Title="Login">
     <ContentPage.Content>
-        <StackLayout
-			Orientation="Vertical"
-			Padding="20"
-			Spacing="30">
-            <BoxView
-				HeightRequest="10" />
-            <Image
-				HorizontalOptions="Center"
-				WidthRequest="300"
-				Source="Arth.png" />
-            <Frame
-				BackgroundColor="#87CEFA"
-				HasShadow="false">
-                <StackLayout
-					Orientation="Vertical"
-					Spacing="10">
-                    <Entry
-						x:Name="usernameEntry"
-						Placeholder="Identifiant"
-                        PlaceholderColor="White"
-						HeightRequest="40"
-                        Text="{Binding Username}"
-                        Keyboard="Email"
-						TextColor="Black">
-                    </Entry>
-                    <Entry
-						x:Name="passwordEntry"
-						IsPassword="true"
-						Text="{Binding Password}"
-						Placeholder="Mot de passe"
-                        PlaceholderColor="White"
-						HeightRequest="40"
-						TextColor="Black">
-                    </Entry>
-                </StackLayout>
-            </Frame>
-            <Button
-				x:Name="LoginButton"
-				Text="Connexion"
-				TextColor="White"
-				FontAttributes="Bold"
-				FontSize="Medium"
-				HorizontalOptions="FillAndExpand"
-				BackgroundColor="CornflowerBlue" 
-                Command="{Binding SubmitCommand}"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout
+                Orientation="Vertical"
+                Padding="20"
+                Spacing="30">
+                <BoxView
+                    HeightRequest="10" />
+                <Image
+                    HorizontalOptions="Center"
+                    WidthRequest="300"
+                    Source="Arth.png" />
+                <Frame
+                    BackgroundColor="#87CEFA"
+                    HasShadow="false">
+                    <StackLayout
+                        Orientation="Vertical"
+                        Spacing="10">
+                        <Entry
+                            x:Name="usernameEntry"
+                            Placeholder="Identifiant"
+                            PlaceholderColor="White"
+                            HeightRequest="40"
+                            Text="{Binding Username}"
+                            Keyboard="Email"
+                            TextColor="Black">
+                        </Entry>
+                        <Entry
+                            x:Name="passwordEntry"
+                            IsPassword="true"
+                            Text="{Binding Password}"
+                            Placeholder="Mot de passe"
+                            PlaceholderColor="White"
+                            HeightRequest="40"
+                            TextColor="Black">
+                        </Entry>
+                    </StackLayout>
+                </Frame>
+                <Button
+                    x:Name="LoginButton"
+                    Text="Connexion"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="CornflowerBlue" 
+                    Command="{Binding SubmitCommand}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

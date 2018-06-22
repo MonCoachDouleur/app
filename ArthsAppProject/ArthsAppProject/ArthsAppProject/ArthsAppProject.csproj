@@ -42,4 +42,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Views\MasterDetail.xaml.cs" />
+    <Compile Remove="ViewModels\MasterDetailViewModel.cs" />
+  </ItemGroup>
 </Project>
