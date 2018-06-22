@@ -8,7 +8,7 @@
     xmlns:behaviors="clr-namespace:ArthsAppProject.Behaviors"
     xmlns:converters="clr-namespace:ArthsAppProject.Converter"
     x:Class="ArthsAppProject.Views.AddDoctor"
-    Title="Add Doctor">
+    Title="Add Doctor" ControlTemplate="{StaticResource MainPageTemplate}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />

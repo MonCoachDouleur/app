@@ -8,7 +8,7 @@
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.Report"
-    Title="Report">
+    Title="Report" ControlTemplate="{StaticResource MainPageTemplate}">
 
 
 

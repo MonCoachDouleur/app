@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Prism;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -60,7 +60,7 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
-        private DateTime datePain;
+        private DateTime datePain = DateTime.Today;
         public DateTime DatePain
         {
             get

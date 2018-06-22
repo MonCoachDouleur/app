@@ -18,8 +18,6 @@ namespace ArthsAppProject
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
 
-		public static NavigationPage Navigation = null;
-
         static ArthsDatabase database;
         
         public App() : this(null) { }
@@ -41,12 +39,12 @@ namespace ArthsAppProject
         protected override async void OnInitialized()
         {
             InitializeComponent();
-			await NavigationService.NavigateAsync("Hello");
+            await NavigationService.NavigateAsync("Hello");
         }
 
-		public async void OnBackButtonPressed(object sender, EventArgs e)
+		public async void OnHomeButtonPressed(object sender, EventArgs e)
         {
-			await Navigation.PushAsync(new Views.Menu());
+            await NavigationService.NavigateAsync("Menu");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

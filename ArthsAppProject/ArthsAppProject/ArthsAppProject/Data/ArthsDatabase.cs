@@ -34,6 +34,7 @@ namespace ArthsAppProject
             painRepo = new Repository<Pain>(database);
             doctorRepo = new Repository<Doctor>(database);
             exerciseRepo = new Repository<Exercise>(database);
+
             userRepo.Insert(admin);
         }
 
