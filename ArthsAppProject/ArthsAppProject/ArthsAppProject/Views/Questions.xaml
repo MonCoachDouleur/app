@@ -14,20 +14,20 @@
             <Style TargetType="Button">
                 <Setter Property="BorderRadius" Value="10" />
                 <Setter Property="BorderWidth" Value="2" />
-                <Setter Property="WidthRequest" Value="150" />
+                <Setter Property="WidthRequest" Value="180" />
                 <Setter Property="HeightRequest" Value="150" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="TextColor" Value="Red" />
+                <Setter Property="TextColor" Value="White" />
             </Style>
 
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout VerticalOptions = "Center">
-            <Button Text="Les questions fréquentes au sujet de l'arthrose" Clicked="OnXamlClicked" />
-            <Button Text="Mon application" Clicked="OnCodeClicked" />
+            <Button Text="Questions fréquentes au sujet de l'arthrose" Clicked="OnCodeClicked" />
+            <Button Text="Contact" Clicked="OnXamlClicked" />
         </StackLayout>
     </ContentPage.Content>
 
