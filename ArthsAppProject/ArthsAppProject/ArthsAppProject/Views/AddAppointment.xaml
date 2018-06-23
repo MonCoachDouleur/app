@@ -5,16 +5,68 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
+    xmlns:behaviors="clr-namespace:ArthsAppProject.Behaviors"
+    xmlns:converters="clr-namespace:ArthsAppProject.Converter"
     x:Class="ArthsAppProject.Views.AddAppointment"
     Title="Add Appointment">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+            <converters:IntEnumConverter x:Key="IntEnum"/>
+            <Style x:Key="EntryStyle" TargetType="{x:Type Entry}">
+                <Setter Property="behaviors:LineColorBehavior.ApplyLineColor" Value="True" />
+                <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource BlackColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="5" Spacing="30">
+                <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="Img_RDV.jpg" Grid.Row="0" Aspect="Fill"/>
+                    <Grid Grid.Row="1" Padding="0,0,0,0" >
+                        <Frame
+				BackgroundColor="#87CEFA"
+				HasShadow="false">
+                            <StackLayout>
+                                <Label Text="Enregistrer un Rendez-vous" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
+                                </Label>
+                                <BoxView           
+             WidthRequest="150"
+             HeightRequest="3"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="#87CEFA"/>
+                                <Label />
+                                <Label Text="Choisir la date" />
+                                <DatePicker x:Name="StartDatePicker" Format="dd/MM/yyyy" Date="{Binding RDVDate}" TextColor="White" />
+                                <Label Text="Choisir l'heure" />
+                                <TimePicker x:Name="timer" Time="{Binding RDVHour}"  TextColor="White" />
+                                <TableView Intent="Data">
+                                    <TableRoot>
+                                        <TableSection Title="Information Médecin traitant">
+                                            <TextCell Text="Nom :" Detail="{Binding Doctor.Name_doc}" TextColor="#87CEFA"/>
+                                            <TextCell Text="Clinique :" Detail="{Binding Doctor.DocAdress}" TextColor="#87CEFA"/>
+                                            <TextCell Text="Spécialité :" Detail="{Binding Doctor.DocSpeciality}" TextColor="#87CEFA" />
+                                            <TextCell Text="Adresse Email :" Detail="{Binding Doctor.DocEmail}" TextColor="#87CEFA"/>
+                                            <TextCell Text="Téléphone :" Detail="{Binding Doctor.DocPhone}" TextColor="#87CEFA"/>
+                                        </TableSection>
+                                    </TableRoot>
+                                </TableView>
+                                <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 
 
-	  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-          <Label Text="AddAppointment" VerticalOptions="Center" HorizontalOptions="Center" />
-		          <Button Text="My Appointments" Command="{Binding Path=NavigateCommand}" CommandParameter="MyAppointments" />
-	  </StackLayout>
-    
-
-</ContentPage>
-
+</ContentPage> 
