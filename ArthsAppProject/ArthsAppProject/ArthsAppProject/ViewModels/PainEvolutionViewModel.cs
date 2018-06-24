@@ -35,20 +35,21 @@ namespace ArthsAppProject.ViewModels
         private async void loadDataInChart(int idUser)
         {
             User User = await App.Database.userRepo.GetWithChild(idUser);
+            User.painList.Sort((pain1, pain2) => DateTime.Compare(pain1.date, pain2.date));
             List<Entry> entryList = new List<Entry>();
 
             foreach (var pain in User.painList)
             {
                 entryList.Add(new Entry(pain.painLevel)
                 {
-                    Label = pain.date.ToString(),
+                    Label = pain.date.ToString("dd/MM/yyyy"),
                     ValueLabel = pain.painLevel.ToString(),
                     Color = SKColor.Parse("#266489")
                 });
 
             }
 
-            Chart = new PointChart() { Entries = entryList.ToArray() };
+            Chart = new LineChart() { Entries = entryList.ToArray() };
         }
     }
 }

@@ -19,22 +19,22 @@
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Image Source="My_Pain.jpg" Grid.Row="0" Aspect="Fill"/>
-            <Grid Grid.Row="1">
-                <Frame
+                    <Grid Grid.Row="1">
+                        <Frame
 				BackgroundColor="DodgerBlue"
 				HasShadow="false">
-                    <StackLayout Spacing="10">
-                        <Label Text="Suivre l'évolution de sa douleur" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
-                        </Label>
-                        <BoxView           
+                            <StackLayout Spacing="10">
+                                <Label Text="Suivre l'évolution de sa douleur" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
+                                </Label>
+                                <BoxView           
              WidthRequest="150"
              HeightRequest="3"
              VerticalOptions="Center" 
              HorizontalOptions="Center" 
                         BackgroundColor="Blue"/>
-                    </StackLayout>
-                </Frame>
-            </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
                     <forms:ChartView x:Name="chart" Chart="{Binding Chart}" HeightRequest="150" Grid.Row="2"/>
                 </Grid>
 
