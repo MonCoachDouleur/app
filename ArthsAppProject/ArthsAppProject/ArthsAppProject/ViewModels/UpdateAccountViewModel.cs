@@ -174,7 +174,7 @@ namespace ArthsAppProject.ViewModels
                 User.PainArea = selectedPainArea;
                 User.Lastname_u = _lastname.Value;
                 User.BirthDate_u = _birthDate;
-                App.Database.userRepo.Insert(User);
+                App.Database.userRepo.UpdateWithChild(User);
                 _dialogService.DisplayAlertAsync("Mon Compte", "Vos informations ont bien été enregistrées", "Ok");
                 _navigationService.NavigateAsync("MyAccount");
             }
