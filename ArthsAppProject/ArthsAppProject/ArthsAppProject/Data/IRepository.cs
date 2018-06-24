@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using SQLiteNetExtensionsAsync.Extensions;
+using System.Collections;
 
 namespace ArthsAppProject
 {
@@ -17,6 +18,8 @@ namespace ArthsAppProject
         Task<T> Get(Expression<Func<T, bool>> predicate);
         AsyncTableQuery<T> AsQueryable();
         void Insert(T entity);
+        void InsertAll(IEnumerable entities);
+
         void InsertWithChild(T entity);
         void Update(T entity);
         void UpdateWithChild(T entity);
@@ -73,6 +76,9 @@ namespace ArthsAppProject
 
         public async Task<int> Delete(T entity) =>
              await db.DeleteAsync(entity);
+
+        public async void InsertAll(IEnumerable entities) =>
+           await db.InsertAllAsync(entities);
     }
 
 }

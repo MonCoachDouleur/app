@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArthsAppProject.Views.ExercicePropr">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="My_Activity_01.jpg" Grid.Row="0" Aspect="Fill"/>
+                <Grid Grid.Row="1" Padding="0,10,0,0" >
+                    <Frame
+				BackgroundColor="#87CEFA"
+				HasShadow="false">
+                        <StackLayout Spacing="10">
+                            <Label Text="Excercice de Proprioception" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
+                            </Label>
+                            <BoxView           
+             WidthRequest="150"
+             HeightRequest="3"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="#FFFFFF"/>
+                            <Label />
+                            <ListView HasUnevenRows="True" ItemsSource="{Binding Exercises}"    >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <ViewCell.View>
+                                                <StackLayout Orientation="Horizontal" Spacing="10" >
+                                                    <Image Source="{Binding ImgName}" WidthRequest="75" HeightRequest="75" />
+                                                    <StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text ="{Binding Type}" FontSize="Large" TextColor="Black" />
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text ="{Binding Description}" FontSize="Medium" TextColor="#FFFFFF"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </ViewCell.View>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Grid>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

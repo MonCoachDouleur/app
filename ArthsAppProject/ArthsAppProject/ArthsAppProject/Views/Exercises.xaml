@@ -28,7 +28,11 @@
                             <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="ADDExercice"  />
                         </Image.GestureRecognizers>
                     </Image>
-                    <Image Source="My_Exos_03.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
+                    <Image Source="My_Exos_03.jpg" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="ExercicePropr"  />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
             </Grid>
         </Grid>
