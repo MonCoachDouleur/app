@@ -9,6 +9,7 @@ using Prism.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
 using ArthsAppProject.Helper;
+using System.Threading.Tasks;
 
 namespace ArthsAppProject.ViewModels
 {
@@ -18,19 +19,17 @@ namespace ArthsAppProject.ViewModels
         private INavigationService _navigationService;
         public User User { get; set; }
         public Doctor Doctor { get; set; }
+        public NotifyTaskCompletion<User> UserTask { get; private set; }
+        public NotifyTaskCompletion<Doctor> DoctorTask { get; private set; }
 
         public MyAccountViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
             _dialogService = dialogService;
             _navigationService = navigationService;
             int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
-            loadData(idUser);
+            UserTask = new NotifyTaskCompletion<User>(App.Database.userRepo.Get(idUser));
+            DoctorTask = new NotifyTaskCompletion<Doctor>(App.Database.doctorRepo.Get(idUser));
         }
-        
-        private async void loadData(int idUser)
-        {
-            User = await App.Database.userRepo.Get(idUser);
-            Doctor = await App.Database.doctorRepo.Get(User.Id_u);
-        }  
+
     }
 }

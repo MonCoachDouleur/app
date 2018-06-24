@@ -20,7 +20,8 @@ namespace ArthsAppProject
         private User admin;
         public ArthsDatabase(string dbPath)
         {
-            admin = new User("test@hotmail.fr", "test");
+            admin = new User("test@hotmail.fr", "test", "Durand", "Nicolas", DateTime.Now, PainAreaEnum.Genoux);
+
             database = new SQLiteAsyncConnection(dbPath);
             database.DropTableAsync<User>().Wait();
             database.CreateTableAsync<User>().Wait();

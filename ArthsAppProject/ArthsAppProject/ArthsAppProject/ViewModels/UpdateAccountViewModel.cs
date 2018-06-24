@@ -30,6 +30,9 @@ namespace ArthsAppProject.ViewModels
         public User User { get; set; }
         private bool _isValid;
 
+        public NotifyTaskCompletion<User> UserTask { get; private set; }
+
+
         public UpdateAccountViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
             _dialogService = dialogService;
@@ -37,18 +40,20 @@ namespace ArthsAppProject.ViewModels
             _username = new ValidatableObject<string>();
             _lastname = new ValidatableObject<string>();
             _firstname = new ValidatableObject<string>();
+            
             int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
             loadData(idUser);
-            _username.Value = User.Login_u;
-            _lastname.Value = User.Lastname_u;
-            _firstname.Value = User.Firstname_u;
-            selectedPainArea = User.PainArea;
             AddValidations();
         }
 
         private async void loadData(int idUser)
         {
             User = await App.Database.userRepo.Get(idUser);
+            _username.Value = User.Login_u;
+            _lastname.Value = User.Lastname_u;
+            _firstname.Value = User.Firstname_u;
+            _birthDate = User.BirthDate_u;
+            selectedPainArea = User.PainArea;
         }
 
         private ValidatableObject<string> _username;
@@ -168,6 +173,7 @@ namespace ArthsAppProject.ViewModels
                 User.Firstname_u = _firstname.Value;
                 User.PainArea = selectedPainArea;
                 User.Lastname_u = _lastname.Value;
+                User.BirthDate_u = _birthDate;
                 App.Database.userRepo.Insert(User);
                 _dialogService.DisplayAlertAsync("Mon Compte", "Vos informations ont bien été enregistrées", "Ok");
                 _navigationService.NavigateAsync("MyAccount");

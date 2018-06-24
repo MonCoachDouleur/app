@@ -7,12 +7,12 @@
         <StackLayout>
         <TableView Intent="Data">
             <TableRoot>
-                <TableSection Title="Informations Utilisateur">
-                    <TextCell Text="Nom " Detail="{Binding User.Firstname_u}" TextColor="#87CEFA"/>
-                    <TextCell Text="Prenom " Detail="{Binding User.Lastname_u}" TextColor="#87CEFA"/>
-                    <TextCell Text="Login " Detail="{Binding User.Login_u}" TextColor="#87CEFA"/>
-                    <TextCell Text="Date de naissance " Detail="{Binding User.BirthDate_u}" TextColor="#87CEFA"/>
-                    <TextCell Text="Zone de la douleur " Detail="{Binding User.PainArea}" TextColor="#87CEFA" />
+                    <TableSection Title="Informations Utilisateur">
+                        <TextCell Text="Nom " Detail="{Binding UserTask.Result.Firstname_u}" TextColor="#87CEFA"/>
+                        <TextCell Text="Prenom " Detail="{Binding UserTask.Result.Lastname_u}" TextColor="#87CEFA"/>
+                        <TextCell Text="Login " Detail="{Binding UserTask.Result.Login_u}" TextColor="#87CEFA"/>
+                        <TextCell Text="Date de naissance " Detail="{Binding UserTask.Result.BirthDate_u, StringFormat='{0:dd/MM/yyyy}'}" TextColor="#87CEFA"/>
+                        <TextCell Text="Zone de la douleur " Detail="{Binding UserTask.Result.PainArea}" TextColor="#87CEFA" />
                 </TableSection>
              </TableRoot>
             </TableView>
@@ -20,11 +20,11 @@
             <TableView Intent="Data">
                 <TableRoot>
                     <TableSection Title="Médecin traitant">
-                        <TextCell Text="Nom " Detail="{Binding Doctor.Name_doc}" TextColor="#87CEFA"/>
-                        <TextCell Text="Clinique " Detail="{Binding Doctor.DocAdress}" TextColor="#87CEFA"/>
-                        <TextCell Text="Spécialité " Detail="{Binding Doctor.DocSpeciality}" TextColor="#87CEFA" />
-                        <TextCell Text="Adresse Email " Detail="{Binding Doctor.DocEmail}" TextColor="#87CEFA"/>
-                        <TextCell Text="Téléphone " Detail="{Binding Doctor.DocPhone}" TextColor="#87CEFA"/>
+                        <TextCell Text="Nom " Detail="{Binding DoctorTask.Result.Name_doc}" TextColor="#87CEFA"/>
+                        <TextCell Text="Clinique " Detail="{Binding DoctorTask.Result.DocAdress}" TextColor="#87CEFA"/>
+                        <TextCell Text="Spécialité " Detail="{Binding DoctorTask.Result.DocSpeciality}" TextColor="#87CEFA" />
+                        <TextCell Text="Adresse Email " Detail="{Binding DoctorTask.Result.DocEmail}" TextColor="#87CEFA"/>
+                        <TextCell Text="Téléphone " Detail="{Binding DoctorTask.Result.DocPhone}" TextColor="#87CEFA"/>
                     </TableSection>
                 </TableRoot>
             </TableView>
