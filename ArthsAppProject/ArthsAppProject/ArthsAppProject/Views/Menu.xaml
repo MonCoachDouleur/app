@@ -58,7 +58,7 @@
                 </Image>
                 <Image Source="Rdv.png" Grid.Row="1" Grid.Column="1" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="AddDoctor" />
+                        <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="ListAppointment" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="Rapport.png" Grid.Row="2" Grid.Column="0" >

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArthsAppProject.Views.ListAppointment">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="Img_RDV.jpg" Grid.Row="0" Aspect="Fill"/>
+                <Grid Grid.Row="1">
+                    <Frame
+				BackgroundColor="#87CEFA"
+				HasShadow="false">
+                        <StackLayout Spacing="10">
+                            <Label Text="Liste des rendez-vous" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
+                            </Label>
+                            <BoxView           
+             WidthRequest="150"
+             HeightRequest="3"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="#FFFFFF"/>
+                            <Button Text="Ajouter un rendez-vous" BackgroundColor="Blue" TextColor="White"  VerticalOptions="Start" HeightRequest="50" Grid.Row="1" Margin="0,0,0,2" Command="{Binding Path=NavigateCommand}" CommandParameter="AddAppointment"/>
+                            <Label />
+                            <ListView HasUnevenRows="True" ItemsSource="{Binding Appointments}"    >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <ViewCell.View>
+                                                <StackLayout Orientation="Horizontal" Spacing="10" >
+                                                    <Image Source="Arth.png" WidthRequest="75" HeightRequest="75" />
+                                                    <StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text ="{Binding Name_exe}" FontSize="Medium" TextColor="#FFFFFF" />
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text ="Le " FontSize="Medium" TextColor="#FFFFFF"/>
+                                                            <Label Text ="{Binding DateAppointment}" FontSize="Medium" TextColor="#FFFFFF" />
+                                                            <Label Text ="à " FontSize="Medium" TextColor="#FFFFFF"/>
+                                                            <Label Text ="{Binding HourAppointment}" FontSize="Medium" TextColor="#FFFFFF" />
+                                                            <Label Text ="h" FontSize="Medium" TextColor="#FFFFFF"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </ViewCell.View>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+
+            </Grid>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
