@@ -25,7 +25,7 @@
              HorizontalOptions="Center" 
                         BackgroundColor="#FFFFFF"/>
                         <Label />
-            <ListView x:Name="ListExos" HasUnevenRows="True" >
+                            <ListView HasUnevenRows="True" ItemsSource="{Binding Exercises}"    >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

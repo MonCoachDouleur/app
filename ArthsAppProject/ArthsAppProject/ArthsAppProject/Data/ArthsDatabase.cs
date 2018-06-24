@@ -18,10 +18,9 @@ namespace ArthsAppProject
 
         readonly SQLiteAsyncConnection database;
         private User admin;
-		public ArthsDatabase(string dbPath)
+        public ArthsDatabase(string dbPath)
         {
             admin = new User("test@hotmail.fr", "test");
-
             database = new SQLiteAsyncConnection(dbPath);
             database.DropTableAsync<User>().Wait();
             database.CreateTableAsync<User>().Wait();
