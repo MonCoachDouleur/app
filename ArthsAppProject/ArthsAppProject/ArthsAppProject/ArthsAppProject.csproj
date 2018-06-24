@@ -25,6 +25,9 @@
     <EmbeddedResource Update="Views\ConfirmADD.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Faq.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ListAppointment.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -40,7 +43,7 @@
     <EmbeddedResource Update="Views\UpdateAccount.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\XamlExample.xaml">
+    <EmbeddedResource Update="Views\Contact.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -48,5 +51,11 @@
   <ItemGroup>
     <Compile Remove="Views\MasterDetail.xaml.cs" />
     <Compile Remove="ViewModels\MasterDetailViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Contact.xaml.cs">
+      <DependentUpon>Contact.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -75,6 +75,9 @@ namespace ArthsAppProject
             containerRegistry.RegisterForNavigation<MyAccount, MyAccountViewModel>();
             containerRegistry.RegisterForNavigation<UpdateAccount, UpdateAccountViewModel>();
             containerRegistry.RegisterForNavigation<ListAppointment, ListAppointmentViewModel>();
+            containerRegistry.RegisterForNavigation<Faq, FaqViewModel>();
+            containerRegistry.RegisterForNavigation<Contact, ContactViewModel>();
+
 
 
         }

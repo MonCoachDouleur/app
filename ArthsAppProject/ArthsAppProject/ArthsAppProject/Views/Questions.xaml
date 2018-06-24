@@ -26,8 +26,8 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout VerticalOptions = "Center">
-            <Button Text="Questions fréquentes au sujet de l'arthrose" Clicked="OnCodeClicked" />
-            <Button Text="Contact" Clicked="OnXamlClicked" />
+            <Button Text="Questions fréquentes au sujet de l'arthrose" Command="{Binding Path=NavigateCommand}" CommandParameter="Faq" />
+            <Button Text="Contact" Command="{Binding Path=NavigateCommand}" CommandParameter="Contact" />
         </StackLayout>
     </ContentPage.Content>
 

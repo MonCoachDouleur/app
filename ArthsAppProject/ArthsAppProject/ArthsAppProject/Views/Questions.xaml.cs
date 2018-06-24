@@ -9,15 +9,5 @@ namespace ArthsAppProject.Views
         {
             InitializeComponent();
         }
-        public void OnXamlClicked(object sender, EventArgs args)
-        {
-
-            Navigation.PushAsync(new XamlExample());
-        }
-        public void OnCodeClicked(object sender, EventArgs args)
-        {
-
-            Navigation.PushAsync(new faq());
-        }
     }
 }
