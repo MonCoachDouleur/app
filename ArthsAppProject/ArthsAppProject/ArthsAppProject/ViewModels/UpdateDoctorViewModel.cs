@@ -35,6 +35,7 @@ namespace ArthsAppProject.ViewModels
         public Doctor doctor { get; set; }
         private bool _isValid;
 
+        public NotifyTaskCompletion<Doctor> DoctorTask { get; private set; }
         public UpdateDoctorViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
             _dialogService = dialogService;
@@ -45,16 +46,22 @@ namespace ArthsAppProject.ViewModels
             _speciality = new ValidatableObject<string>();
             _phoneNumber = new ValidatableObject<string>();
             int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
-            User user = App.Database.userRepo.Get(idUser).Result;
-            doctor = App.Database.doctorRepo.Get(user.Id_u).Result;
-            if (doctor != null) { 
-            _username.Value = doctor.DocEmail;
-            _lastname.Value = doctor.Name_doc;
-            _hospital.Value = doctor.DocAdress;
-            _speciality.Value = doctor.DocSpeciality;
-            _phoneNumber.Value = doctor.DocPhone;
-            }
+           
+            loadData(idUser);
             AddValidations();
+        }
+
+        private async void loadData(int idUser)
+        {
+            doctor = await App.Database.doctorRepo.Get(idUser);
+            if (doctor != null)
+            {
+                _username.Value = doctor.DocEmail;
+                _lastname.Value = doctor.Name_doc;
+                _hospital.Value = doctor.DocAdress;
+                _speciality.Value = doctor.DocSpeciality;
+                _phoneNumber.Value = doctor.DocPhone;
+            }
         }
 
         private ValidatableObject<string> _phoneNumber;
@@ -137,7 +144,7 @@ namespace ArthsAppProject.ViewModels
                 doctor.DocAdress = _hospital.Value;
                 doctor.DocSpeciality = _speciality.Value;
                 doctor.DocPhone = _phoneNumber.Value;
-                App.Database.doctorRepo.Update(doctor);
+                App.Database.doctorRepo.UpdateWithChild(doctor);
                 _dialogService.DisplayAlertAsync("Médecin traitant", "Vos onformations ont bien été enregistrées", "Ok");
                 _navigationService.NavigateAsync("MyAccount");
             }
