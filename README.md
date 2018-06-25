@@ -1,3 +1,5 @@
+![img](https://lh3.googleusercontent.com/AJ7MllAGAZkwdE_XUKdaz_1zXGiKhqoBxOIowMOdAG_4iEgzV-ie7WFbV8smOrj5f-htf2h6QhI)
+
 Arth'App est une application gratuite qui vous assiste au quotidien dans la gestion de votre douleur due à l'arthrose. Elle constitue en quelque sorte un journal de bord, dans lequel vous pourrez saisir et suivre votre douleur en fonction de son intensité et de ses circonstances , générer des rapports que vous pourrez envoyer a votre médecin traitant, et retrouver des informations pratiques tels que des exercices physiques et des conseils.
  
 ![img](https://www.sanofi-arthrose.fr/wp-content/uploads/2014/06/etape_1.png)
