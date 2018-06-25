@@ -104,7 +104,7 @@
                         <DatePicker x:Name="StartDatePicker" Format="dd/MM/yyyy" Date="{Binding BirthDate}" TextColor="White" />
                         
                         <Label Text="Zone de douleur" />
-                        <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter=IntEnum}" TextColor="White" />
+                        <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding PainAreaNames}" SelectedIndex="{Binding SelectedPainArea, Converter={StaticResource IntEnum}}" TextColor="White" />
                     </StackLayout>
                 </Frame>
                 <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>

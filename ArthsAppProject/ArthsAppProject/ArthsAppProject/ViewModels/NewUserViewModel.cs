@@ -131,6 +131,8 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 selectedPainArea = value;
+                RaisePropertyChanged(() => SelectedPainArea);
+
             }
         }
 
