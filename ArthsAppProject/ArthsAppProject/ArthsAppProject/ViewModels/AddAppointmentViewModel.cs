@@ -17,7 +17,11 @@ namespace ArthsAppProject.ViewModels
 
         private IPageDialogService _dialogService;
         private INavigationService _navigationService;
-        public Doctor Doctor { get; set; }
+        public Doctor doctor { get; set; }
+        public string PageName { get; set; }
+
+        public NotifyTaskCompletion<Doctor> DoctorTask { get; private set; }
+
 
         int idUser;
         public AddAppointmentViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
@@ -25,12 +29,13 @@ namespace ArthsAppProject.ViewModels
             _dialogService = dialogService;
             _navigationService = navigationService;
             idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
-            loadData(idUser);
-        }
+            DoctorTask = new NotifyTaskCompletion<Doctor>(App.Database.doctorRepo.Get(idUser));
 
-        private async void loadData(int idUser)
-        {
-            Doctor = await App.Database.doctorRepo.Get(idUser);
+            if (DoctorTask.Task.Id <= 1)
+            {
+                PageName = "AddDoctor";
+            }
+
         }
 
         private DateTime _rdvDate;

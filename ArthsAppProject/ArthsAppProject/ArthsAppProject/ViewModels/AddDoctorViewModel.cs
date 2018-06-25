@@ -129,7 +129,7 @@ namespace ArthsAppProject.ViewModels
                 Doctor doctor = new Doctor(this._lastname.Value, this._hospital.Value, this._speciality.Value, this._username.Value, this._phoneNumber.Value, user.Id_u);
                 App.Database.doctorRepo.Insert(doctor);
                 await _dialogService.DisplayAlertAsync("Ajouter un Médecin", "Le médecin a été bien ajouté.", "Ok");
-                await _navigationService.NavigateAsync("ConfirmADD");
+                await _navigationService.NavigateAsync("AddAppointment");
             }
         }
 

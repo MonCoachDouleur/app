@@ -51,14 +51,15 @@
                                 <TableView Intent="Data">
                                     <TableRoot>
                                         <TableSection Title="Information Médecin traitant">
-                                            <TextCell Text="Nom :" Detail="{Binding Doctor.Name_doc}" TextColor="#87CEFA"/>
-                                            <TextCell Text="Clinique :" Detail="{Binding Doctor.DocAdress}" TextColor="#87CEFA"/>
-                                            <TextCell Text="Spécialité :" Detail="{Binding Doctor.DocSpeciality}" TextColor="#87CEFA" />
-                                            <TextCell Text="Adresse Email :" Detail="{Binding Doctor.DocEmail}" TextColor="#87CEFA"/>
-                                            <TextCell Text="Téléphone :" Detail="{Binding Doctor.DocPhone}" TextColor="#87CEFA"/>
+                                            <TextCell Text="Nom :" Detail="{Binding DoctorTask.Result.Name_doc}" TextColor="Blue"/>
+                                            <TextCell Text="Clinique :" Detail="{Binding DoctorTask.Result.DocAdress}" TextColor="Blue"/>
+                                            <TextCell Text="Spécialité :" Detail="{Binding DoctorTask.Result.DocSpeciality}" TextColor="Blue" />
+                                            <TextCell Text="Adresse Email :" Detail="{Binding DoctorTask.Result.DocEmail}" TextColor="Blue"/>
+                                            <TextCell Text="Téléphone :" Detail="{Binding Doctor.DocPhone}" TextColor="Blue"/>
                                         </TableSection>
                                     </TableRoot>
                                 </TableView>
+                                <Button Text="Ajouter un Médecin" TextColor="White" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding Path=NavigateCommand}" CommandParameter="{Binding PageName}"/>
                                 <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
                             </StackLayout>
                         </Frame>
