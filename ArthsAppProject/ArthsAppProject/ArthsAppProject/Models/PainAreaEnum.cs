@@ -8,6 +8,8 @@ namespace ArthsAppProject
         Hanches,
         Mains,
         Rachis,
-        EpaulesCoudesChevilles
+        Epaules,
+		Coudes,
+		Chevilles
     };
 }

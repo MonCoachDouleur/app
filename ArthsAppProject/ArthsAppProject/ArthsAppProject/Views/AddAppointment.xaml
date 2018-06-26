@@ -8,7 +8,7 @@
     xmlns:behaviors="clr-namespace:ArthsAppProject.Behaviors"
     xmlns:converters="clr-namespace:ArthsAppProject.Converter"
     x:Class="ArthsAppProject.Views.AddAppointment"
-    Title="Add Appointment">
+    Title="Add Appointment" ControlTemplate="{StaticResource MainPageTemplate}">
 
     <ContentPage.Resources>
         <ResourceDictionary>

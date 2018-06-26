@@ -123,7 +123,7 @@ namespace ArthsAppProject.ViewModels
         }
 
 
-        private PainAreaEnum selectedPainArea;
+		private PainAreaEnum selectedPainArea;
 
         public PainAreaEnum SelectedPainArea
         {
@@ -134,6 +134,8 @@ namespace ArthsAppProject.ViewModels
             set
             {
                 selectedPainArea = value;
+                RaisePropertyChanged(() => SelectedPainArea);
+
             }
         }
 
