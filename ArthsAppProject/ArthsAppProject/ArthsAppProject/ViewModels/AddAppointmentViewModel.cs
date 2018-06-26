@@ -18,6 +18,7 @@ namespace ArthsAppProject.ViewModels
         private IPageDialogService _dialogService;
         private INavigationService _navigationService;
         public Doctor doctor { get; set; }
+
         public string PageName { get; set; }
 
         public NotifyTaskCompletion<Doctor> DoctorTask { get; private set; }
@@ -30,11 +31,6 @@ namespace ArthsAppProject.ViewModels
             _navigationService = navigationService;
             idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
             DoctorTask = new NotifyTaskCompletion<Doctor>(App.Database.doctorRepo.Get(idUser));
-
-            if (DoctorTask.Task.Id <= 1)
-            {
-                PageName = "AddDoctor";
-            }
 
         }
 
@@ -67,10 +63,19 @@ namespace ArthsAppProject.ViewModels
         }
         private async System.Threading.Tasks.Task OnSubmitAsync()
         {
-            Appointment appointment = new Appointment(this._rdvDate, this._rdvHour, this.idUser);
-            App.Database.appointmentRepo.Insert(appointment);
-            await _dialogService.DisplayAlertAsync("Ajouter un Rendez-vous", "Votre rendez-vous a été bien enregistré.", "Ok");
-            await _navigationService.NavigateAsync("ListAppointment");
+            Doctor doctor = await App.Database.doctorRepo.Get(predicate: x => x.user_id.Equals(idUser));
+            if(doctor != null)
+            {
+                Appointment appointment = new Appointment(this._rdvDate, this._rdvHour, this.idUser);
+                App.Database.appointmentRepo.Insert(appointment);
+                await _dialogService.DisplayAlertAsync("Ajouter un Rendez-vous", "Votre rendez-vous a été bien enregistré.", "Ok");
+                await _navigationService.NavigateAsync("MyAppointments");
+            }
+            else
+            {
+                await _dialogService.DisplayAlertAsync("Ajouter un Rendez-vous", "Veuillez ajouter un Médecin.", "Ok");
+            }
+
         }
     }
 }

@@ -78,7 +78,7 @@ namespace ArthsAppProject
             containerRegistry.RegisterForNavigation<Faq, FaqViewModel>();
             containerRegistry.RegisterForNavigation<Contact, ContactViewModel>();
             containerRegistry.RegisterForNavigation<ExercicePropr, ExerciceProprViewModel>();
-
+            containerRegistry.RegisterForNavigation<UpdateDoctorApp, UpdateDoctorAppViewModel>();
 
 
 

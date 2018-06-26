@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
+    xmlns:behaviors="clr-namespace:ArthsAppProject.Behaviors"
+    xmlns:converters="clr-namespace:ArthsAppProject.Converter"
+    x:Class="ArthsAppProject.Views.UpdateDoctorApp"
+    Title="Update Doctor" ControlTemplate="{StaticResource MainPageTemplate}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+            <converters:IntEnumConverter x:Key="IntEnum"/>
+            <Style x:Key="EntryStyle" TargetType="{x:Type Entry}">
+                <Setter Property="behaviors:LineColorBehavior.ApplyLineColor" Value="True" />
+                <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource BlackColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="5" Spacing="30">
+                <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="Doctor.jpg" Grid.Row="0" Aspect="Fill"/>
+                    <Grid Grid.Row="1" Padding="0,0,0,0" >
+                        <Frame
+				BackgroundColor="#87CEFA"
+				HasShadow="false">
+                            <StackLayout>
+                                <Label Text="Enregistrer un Médecin" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" TextColor="White" Font="20">
+                                </Label>
+                                <BoxView           
+             WidthRequest="150"
+             HeightRequest="3"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+                        BackgroundColor="#87CEFA"/>
+                                <Label />
+                                <Label Text="Nom :" />
+                                <Entry Placeholder="Nom" Text="{Binding Lastname.Value, Mode=TwoWay}" TextColor="White" Keyboard="Text" PlaceholderColor="White" HeightRequest="40">
+                                    <Entry.Style>
+                                        <OnPlatform x:TypeArguments="Style">
+                                            <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                        </OnPlatform>
+                                    </Entry.Style>
+                                    <Entry.Behaviors>
+                                        <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateLastnameCommand}" />
+                                    </Entry.Behaviors>
+                                    <Entry.Triggers>
+                                        <DataTrigger TargetType="Entry" Binding="{Binding Lastname.IsValid}" Value="False">
+                                            <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                        </DataTrigger>
+                                    </Entry.Triggers>
+                                </Entry>
+                                <Label Text="{Binding Lastname.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                                <Label Text="Clinique :" />
+                                <Entry Placeholder="Clinique" Text="{Binding Hospital.Value, Mode=TwoWay}" TextColor="White" Keyboard="Text" PlaceholderColor="White" HeightRequest="40">
+                                    <Entry.Style>
+                                        <OnPlatform x:TypeArguments="Style">
+                                            <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                        </OnPlatform>
+                                    </Entry.Style>
+                                    <Entry.Behaviors>
+                                        <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateHospitalCommand}" />
+                                    </Entry.Behaviors>
+                                    <Entry.Triggers>
+                                        <DataTrigger TargetType="Entry" Binding="{Binding Lastname.IsValid}" Value="False">
+                                            <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                        </DataTrigger>
+                                    </Entry.Triggers>
+                                </Entry>
+                                <Label Text="{Binding Hospital.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                                <Label Text="Spécialité :" />
+                                <Entry Placeholder="Spécialité" Text="{Binding Speciality.Value, Mode=TwoWay}" TextColor="White" Keyboard="Text" PlaceholderColor="White" HeightRequest="40">
+                                    <Entry.Style>
+                                        <OnPlatform x:TypeArguments="Style">
+                                            <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                        </OnPlatform>
+                                    </Entry.Style>
+                                    <Entry.Behaviors>
+                                        <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateSpecialityCommand}" />
+                                    </Entry.Behaviors>
+                                    <Entry.Triggers>
+                                        <DataTrigger TargetType="Entry" Binding="{Binding Lastname.IsValid}" Value="False">
+                                            <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                        </DataTrigger>
+                                    </Entry.Triggers>
+                                </Entry>
+                                <Label Text="{Binding Speciality.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+
+                                <Label Text="Adresse email" />
+                                <Entry Placeholder="Adresse email" Text="{Binding Username.Value, Mode=TwoWay}" TextColor="White" Keyboard="Email" PlaceholderColor="White" HeightRequest="40">
+                                    <Entry.Style>
+                                        <OnPlatform x:TypeArguments="Style">
+                                            <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                        </OnPlatform>
+                                    </Entry.Style>
+                                    <Entry.Behaviors>
+                                        <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserNameCommand}" />
+                                    </Entry.Behaviors>
+                                    <Entry.Triggers>
+                                        <DataTrigger TargetType="Entry" Binding="{Binding Username.IsValid}" Value="False">
+                                            <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                        </DataTrigger>
+                                    </Entry.Triggers>
+                                </Entry>
+                                <Label Text="{Binding Username.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
+                                <Label Text="Numéro de téléphone" />
+                                <Entry Placeholder="Numéro de téléphone" Text="{Binding PhoneNumber.Value, Mode=TwoWay}" TextColor="White" Keyboard="Numeric" PlaceholderColor="White" HeightRequest="40">
+                                    <Entry.Style>
+                                        <OnPlatform x:TypeArguments="Style">
+                                            <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                        </OnPlatform>
+                                    </Entry.Style>
+                                    <Entry.Behaviors>
+                                        <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidatePhoneNumberCommand}" />
+                                    </Entry.Behaviors>
+                                    <Entry.Triggers>
+                                        <DataTrigger TargetType="Entry" Binding="{Binding Username.IsValid}" Value="False">
+                                            <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                        </DataTrigger>
+                                    </Entry.Triggers>
+                                </Entry>
+                                <Label Text="{Binding PhoneNumber.Errors, Converter={StaticResource FirstValidationErrorConverter}" Style="{StaticResource ValidationErrorLabelStyle}" />
+                                <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage> 

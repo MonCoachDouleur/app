@@ -16,7 +16,7 @@ using ArthsAppProject.Helper;
 
 namespace ArthsAppProject.ViewModels
 {
-    public class UpdateDoctorViewModel : AppMapViewModelBase
+    public class UpdateDoctorAppViewModel : AppMapViewModelBase
     {
         public ICommand SubmitCommand => new Command(() => OnSubmit());
 
@@ -37,7 +37,7 @@ namespace ArthsAppProject.ViewModels
         int idUser;
         private bool isUpdate;
         public NotifyTaskCompletion<Doctor> DoctorTask { get; private set; }
-        public UpdateDoctorViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
+        public UpdateDoctorAppViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
             _dialogService = dialogService;
             _navigationService = navigationService;
@@ -161,7 +161,7 @@ namespace ArthsAppProject.ViewModels
 
                 }
                 _dialogService.DisplayAlertAsync("Médecin traitant", "Vos informations ont bien été enregistrées", "Ok");
-                _navigationService.NavigateAsync("MyAccount");
+                _navigationService.NavigateAsync("AddAppointment");
             }
         }
 

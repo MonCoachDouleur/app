@@ -60,5 +60,8 @@
     <Compile Update="Views\Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\UpdateDoctorApp.xaml.cs">
+      <DependentUpon>UpdateDoctorApp.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
