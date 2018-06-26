@@ -34,7 +34,8 @@ namespace ArthsAppProject.ViewModels
         private INavigationService _navigationService;
         public Doctor doctor { get; set; }
         private bool _isValid;
-
+        int idUser;
+        private bool isUpdate;
         public NotifyTaskCompletion<Doctor> DoctorTask { get; private set; }
         public UpdateDoctorViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
@@ -45,7 +46,7 @@ namespace ArthsAppProject.ViewModels
             _hospital = new ValidatableObject<string>();
             _speciality = new ValidatableObject<string>();
             _phoneNumber = new ValidatableObject<string>();
-            int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
+            idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
            
             loadData(idUser);
             AddValidations();
@@ -61,6 +62,11 @@ namespace ArthsAppProject.ViewModels
                 _hospital.Value = doctor.DocAdress;
                 _speciality.Value = doctor.DocSpeciality;
                 _phoneNumber.Value = doctor.DocPhone;
+                isUpdate = true;
+            }
+            else
+            {
+                isUpdate = false;
             }
         }
 
@@ -139,12 +145,21 @@ namespace ArthsAppProject.ViewModels
             bool isValid = Validate();
             if (isValid)
             {
-                doctor.DocEmail = _username.Value;
-                doctor.Name_doc = _lastname.Value;
-                doctor.DocAdress = _hospital.Value;
-                doctor.DocSpeciality = _speciality.Value;
-                doctor.DocPhone = _phoneNumber.Value;
-                App.Database.doctorRepo.UpdateWithChild(doctor);
+                if (isUpdate)
+                {
+                    doctor.DocEmail = _username.Value;
+                    doctor.Name_doc = _lastname.Value;
+                    doctor.DocAdress = _hospital.Value;
+                    doctor.DocSpeciality = _speciality.Value;
+                    doctor.DocPhone = _phoneNumber.Value;
+                    App.Database.doctorRepo.UpdateWithChild(doctor);
+                }
+                else
+                {
+                    doctor = new Doctor(_lastname.Value, _hospital.Value, _speciality.Value, _username.Value, _phoneNumber.Value, 1);
+                    App.Database.doctorRepo.Insert(doctor);
+
+                }
                 _dialogService.DisplayAlertAsync("Médecin traitant", "Vos onformations ont bien été enregistrées", "Ok");
                 _navigationService.NavigateAsync("MyAccount");
             }
