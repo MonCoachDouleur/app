@@ -6,7 +6,7 @@
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.UpdateAppointment"
-    Title="Update Appointment">
+    Title="Update Appointment" ControlTemplate="{StaticResource MainPageTemplate}">
 
 
 
