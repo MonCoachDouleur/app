@@ -69,7 +69,7 @@ namespace ArthsAppProject.ViewModels
                 Appointment appointment = new Appointment(this._rdvDate, this._rdvHour, this.idUser);
                 App.Database.appointmentRepo.Insert(appointment);
                 await _dialogService.DisplayAlertAsync("Ajouter un Rendez-vous", "Votre rendez-vous a été bien enregistré.", "Ok");
-                await _navigationService.NavigateAsync("MyAppointments");
+                await _navigationService.NavigateAsync("ListAppointment");
             }
             else
             {
