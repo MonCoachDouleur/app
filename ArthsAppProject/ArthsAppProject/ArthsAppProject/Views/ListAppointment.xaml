@@ -39,10 +39,9 @@
                                                         </StackLayout>
                                                         <StackLayout Orientation="Horizontal">
                                                             <Label Text ="Le " FontSize="Medium" TextColor="#FFFFFF"/>
-                                                            <Label Text ="{Binding DateAppointment}" FontSize="Medium" TextColor="#FFFFFF" />
+                                                            <Label Text ="{Binding DateAppointment, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="Medium" TextColor="#FFFFFF" />
                                                             <Label Text ="à " FontSize="Medium" TextColor="#FFFFFF"/>
-                                                            <Label Text ="{Binding HourAppointment}" FontSize="Medium" TextColor="#FFFFFF" />
-                                                            <Label Text ="h" FontSize="Medium" TextColor="#FFFFFF"/>
+                                                            <Label Text ="{Binding HourAppointment, StringFormat='{}{0:hh\\:mm}'}" FontSize="Medium" TextColor="#FFFFFF" />
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </StackLayout>

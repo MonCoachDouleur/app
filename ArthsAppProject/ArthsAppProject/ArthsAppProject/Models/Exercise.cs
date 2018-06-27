@@ -11,14 +11,18 @@ namespace ArthsAppProject
         [PrimaryKey, AutoIncrement]
         public int Id_exe { get; set; }
         public TypeExosEnum Name_exe { get; set; }
-        public string Duration { get; set; }
+        public DateTime Duration { get; set; }
+
+        public DateTime DayExo { get; set; }
+
         public int Id_user;
 
         public Exercise() { }
 
-        public Exercise(TypeExosEnum typeExe, string duration, int id_user)
+        public Exercise(TypeExosEnum typeExe,DateTime dayExo, DateTime duration, int id_user)
         {
             this.Name_exe = typeExe;
+            this.DayExo = dayExo;
             this.Duration = duration;
             this.Id_user = id_user;
         }

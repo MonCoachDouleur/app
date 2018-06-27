@@ -34,12 +34,12 @@
                                     <Image Source="Arth.png" WidthRequest="75" HeightRequest="75" />
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                                            <Label Text ="{Binding Name_exe}" FontSize="Medium" TextColor="#FFFFFF" />
+                                          <Label Text ="{Binding Name_exe}" FontSize="Medium" TextColor="#FFFFFF" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                           <Label Text ="18/02/2018" FontSize="Medium" TextColor="#FFFFFF"/>
+                                            <Label Text ="{Binding DayExo, StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="Medium" TextColor="#FFFFFF"/>
                                            <Label Text ="Durée :" FontSize="Medium" TextColor="#FFFFFF" />
-                                           <Label Text ="{Binding Duration}" FontSize="Medium" TextColor="#FFFFFF" />
+                                            <Label Text ="{Binding Duration, StringFormat='{}{0:hh\\:mm}'}" FontSize="Medium" TextColor="#FFFFFF" />
                                         </StackLayout>
                                 </StackLayout>
                                 </StackLayout>

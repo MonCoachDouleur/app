@@ -25,7 +25,7 @@ namespace ArthsAppProject.ViewModels
         private IPageDialogService _dialogService;
         private INavigationService _navigationService;
         private TypeExosEnum typeExoSelected;
-        private string durationExo;
+        private DateTime durationExo;
 
         public ADDExerciceViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
@@ -51,7 +51,7 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
-        public string DurationExo
+        public DateTime DurationExo
         {
             get { return durationExo; }
             set
@@ -61,11 +61,23 @@ namespace ArthsAppProject.ViewModels
             }
         }
 
+        private DateTime dayExo;
+        public DateTime DayExo
+        {
+            get { return dayExo; }
+            set
+            {
+                dayExo = value;
+                RaisePropertyChanged(() => DayExo);
+            }
+        }
+
         private async void OnSubmitAsync()
         {
             int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
             User user = await App.Database.userRepo.Get(idUser);
-            Exercise exercise = new Exercise(typeExoSelected, durationExo, user.Id_u);
+            DayExo = DateTime.Now;
+            Exercise exercise = new Exercise(typeExoSelected, DayExo,  durationExo, user.Id_u);
             App.Database.exerciseRepo.Insert(exercise);   
             await _navigationService.NavigateAsync("Exercises");
                 

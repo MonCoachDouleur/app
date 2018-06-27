@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:converters="clr-namespace:ArthsAppProject.Converter"
              x:Class="ArthsAppProject.Views.ADDExercice"
              BackgroundColor="Azure" ControlTemplate="{StaticResource MainPageTemplate}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IntEnumConverter x:Key="IntEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <RelativeLayout>
             <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
@@ -27,13 +33,11 @@
                         BackgroundColor="#87CEFA"/>
                         <Label />
                         <Label Text="Choisir le type d'exercice :" />
-                            <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding TypeExosNames}" SelectedIndex="{Binding TypeExoSelected, Converter=IntEnum}" TextColor="White" />
+                            <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding TypeExosNames}" SelectedIndex="{Binding TypeExoSelected, Converter={StaticResource IntEnum}}" TextColor="White" />
                         
                         <Label Text="Choisir la durée d'exercice en minutes :" />
-                            <Entry Placeholder="Durée" Text="{Binding DurationExo}" TextColor="White" Keyboard="Text" PlaceholderColor="White" HeightRequest="40">
-                           
-                        </Entry>
-                        <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+                            <TimePicker x:Name="timer" Time="{Binding DurationExo}"  TextColor="White" />
+                            <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
                     </StackLayout>
                     </Frame>
             </Grid>
