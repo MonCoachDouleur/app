@@ -34,7 +34,7 @@
                                                     <Image Source="{Binding ImgName}" WidthRequest="75" HeightRequest="75" />
                                                     <StackLayout>
                                                         <StackLayout Orientation="Horizontal">
-                                                            <Label Text ="{Binding Type}" FontSize="Large" TextColor="Black" />
+                                                            <Label Text ="{Binding Titre}" FontSize="Large" TextColor="Black" />
                                                         </StackLayout>
                                                         <StackLayout Orientation="Horizontal">
                                                             <Label Text ="{Binding Description}" FontSize="Medium" TextColor="#FFFFFF"/>
@@ -48,7 +48,7 @@
                             </ListView>
                             <Label Text="Choisir la durée d'exercice en minutes :" />
                             <Entry Placeholder="Durée" Text="{Binding DurationExo}" TextColor="White" Keyboard="Text" PlaceholderColor="White" HeightRequest="40" />
-                            <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+                            <Button Text="Enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
                         </StackLayout>
                     </Frame>
                 </Grid>

@@ -13,13 +13,13 @@ namespace ArthsAppProject
 
         public string ImgName { get; set; }
         public string ZonePain { get; set; }
-        public string Type { get; set; }
+        public string Titre { get; set; }
         public string Description { get; set; }
 
-        public ExercisePrepro(string zonePain, string typeExe, string description, string imgName)
+        public ExercisePrepro(string zonePain, string titreExe, string description, string imgName)
         {
             this.ZonePain = zonePain;
-            this.Type = typeExe;
+            this.Titre= titreExe;
             this.Description = description;
             this.ImgName = imgName;
         }
