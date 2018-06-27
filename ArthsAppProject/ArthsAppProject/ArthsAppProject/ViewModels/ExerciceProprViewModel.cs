@@ -44,7 +44,7 @@ namespace ArthsAppProject.ViewModels
         }
         public async void GetExercices()
         {
-            Exercises = new ObservableCollection<ExercisePrepro>(await App.Database.exercisePreproRepo.Get(null, (mycustomer => mycustomer.Type)));
+            Exercises = new ObservableCollection<ExercisePrepro>(await App.Database.exercisePreproRepo.Get(null, (mycustomer => mycustomer.Titre)));
         }
 
         public string DurationExo

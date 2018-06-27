@@ -60,5 +60,5 @@ namespace ArthsAppProject
             exercisePreproRepo.InsertAll(exercices);
         }
 
-    }
+    } 
 }
