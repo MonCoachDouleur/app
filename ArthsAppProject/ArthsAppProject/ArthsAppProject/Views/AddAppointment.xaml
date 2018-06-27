@@ -60,7 +60,7 @@
                                     </TableRoot>
                                 </TableView>
                                 <Button Text="Ajouter/Modifier Médecin" TextColor="White" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding Path=NavigateCommand}" CommandParameter="UpdateDoctorApp"/>
-                                <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+                                <Button Text="Enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
                             </StackLayout>
                         </Frame>
                     </Grid>

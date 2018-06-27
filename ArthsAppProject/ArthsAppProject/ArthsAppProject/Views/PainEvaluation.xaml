@@ -58,7 +58,7 @@
                         </Editor>
                             <Label Text="Date de douleur" />
                         <DatePicker x:Name="StartDatePicker" Format="dd/MM/yyyy" Date="{Binding DatePain}" TextColor="White" />
-                        <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+                        <Button Text="Enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
                     </StackLayout>
                 </Frame>
             </Grid>

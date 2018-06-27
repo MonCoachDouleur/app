@@ -37,7 +37,7 @@
                         
                         <Label Text="Choisir la durée d'exercice en minutes :" />
                             <Entry Placeholder="0000" Text="{Binding DurationExo}" TextColor="White" Keyboard="Text" PlaceholderColor="White" HeightRequest="40" />
-                            <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
+                            <Button Text="Enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
                     </StackLayout>
                     </Frame>
             </Grid>
