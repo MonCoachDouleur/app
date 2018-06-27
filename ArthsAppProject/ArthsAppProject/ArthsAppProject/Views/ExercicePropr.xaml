@@ -30,7 +30,7 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <ViewCell.View>
-                                                <StackLayout Orientation="Horizontal" Spacing="10" >
+                                                <StackLayout Orientation="Horizontal">
                                                     <Image Source="{Binding ImgName}" WidthRequest="75" HeightRequest="75" />
                                                     <StackLayout>
                                                         <StackLayout Orientation="Horizontal">
@@ -46,6 +46,9 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
+                            <Label Text="Choisir la durée d'exercice en minutes :" />
+                            <Entry Placeholder="Durée" Text="{Binding DurationExo}" TextColor="White" Keyboard="Text" PlaceholderColor="White" HeightRequest="40" />
+                            <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
                         </StackLayout>
                     </Frame>
                 </Grid>

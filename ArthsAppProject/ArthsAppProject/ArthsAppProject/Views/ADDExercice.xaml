@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:converters="clr-namespace:ArthsAppProject.Converter"
              x:Class="ArthsAppProject.Views.ADDExercice"
-             BackgroundColor="Azure" ControlTemplate="{StaticResource MainPageTemplate}">
+             BackgroundImage="ArthImage.jpg" ControlTemplate="{StaticResource MainPageTemplate}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:IntEnumConverter x:Key="IntEnum"/>
@@ -18,7 +18,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Image Source="My_Activity_01.jpg" Grid.Row="0" Aspect="Fill"/>
-                <Grid Grid.Row="1" Padding="0,10,0,0" >
+                <Grid Grid.Row="1">
                     <Frame
 				BackgroundColor="#87CEFA"
 				HasShadow="false">
@@ -33,10 +33,10 @@
                         BackgroundColor="#87CEFA"/>
                         <Label />
                         <Label Text="Choisir le type d'exercice :" />
-                            <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding TypeExosNames}" SelectedIndex="{Binding TypeExoSelected, Converter={StaticResource IntEnum}}" TextColor="White" />
+                        <Picker VerticalOptions="CenterAndExpand" ItemsSource="{Binding TypeExosNames}" SelectedIndex="{Binding TypeExoSelected, Converter={StaticResource IntEnum}}" TextColor="White" />
                         
                         <Label Text="Choisir la durée d'exercice en minutes :" />
-                            <TimePicker x:Name="timer" Time="{Binding DurationExo}"  TextColor="White" />
+                            <Entry Placeholder="0000" Text="{Binding DurationExo}" TextColor="White" Keyboard="Text" PlaceholderColor="White" HeightRequest="40" />
                             <Button Text="S'enregistrer" TextColor="White" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"  Command="{Binding SubmitCommand}"/>
                     </StackLayout>
                     </Frame>

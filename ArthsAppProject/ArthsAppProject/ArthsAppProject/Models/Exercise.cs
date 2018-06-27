@@ -10,8 +10,8 @@ namespace ArthsAppProject
     {
         [PrimaryKey, AutoIncrement]
         public int Id_exe { get; set; }
-        public TypeExosEnum Name_exe { get; set; }
-        public DateTime Duration { get; set; }
+        public string Name_exe { get; set; }
+        public string Duration { get; set; }
 
         public DateTime DayExo { get; set; }
 
@@ -19,7 +19,7 @@ namespace ArthsAppProject
 
         public Exercise() { }
 
-        public Exercise(TypeExosEnum typeExe,DateTime dayExo, DateTime duration, int id_user)
+        public Exercise(string typeExe,DateTime dayExo, string duration, int id_user)
         {
             this.Name_exe = typeExe;
             this.DayExo = dayExo;
