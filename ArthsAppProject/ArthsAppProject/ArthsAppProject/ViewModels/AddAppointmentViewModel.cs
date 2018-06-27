@@ -34,7 +34,7 @@ namespace ArthsAppProject.ViewModels
 
         }
 
-        private DateTime _rdvDate;
+        private DateTime _rdvDate = DateTime.Today;
         public DateTime RDVDate
         {
             get
