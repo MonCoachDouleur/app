@@ -64,7 +64,7 @@
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>3.1.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.561731" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="25.4.0.2" />
@@ -73,7 +73,10 @@
     <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.362" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\AndroidImageSource.cs" />
     <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\PdfHandler.cs" />
+    <Compile Include="Helper\PdfSave.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +105,14 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\Downloads\PDFSharp.Xamarin.Forms-master\PdfSharp.Xamarin.Forms\PdfSharp.Xamarin.Forms.csproj">
+      <Project>{C8A3DFD6-0D6D-4C0B-AB5B-ECBAFF8B67AE}</Project>
+      <Name>PdfSharp.Xamarin.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\Downloads\PDFSharp.Xamarin.Forms-master\PdfSharpCore\PdfSharpCore.csproj">
+      <Project>{9FC99D31-8654-409F-B473-E0C7AF9A5A0E}</Project>
+      <Name>PdfSharpCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ArthsAppProject\ArthsAppProject.csproj">
       <Project>{617768A2-1178-4880-8565-E711B4902F20}</Project>
       <Name>ArthsAppProject</Name>
