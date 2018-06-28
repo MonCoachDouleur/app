@@ -36,6 +36,7 @@
                     <RowDefinition Height="110"/>
                     <RowDefinition Height="110"/>
                     <RowDefinition Height="110"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -71,6 +72,7 @@
                         <TapGestureRecognizer Command="{Binding Path=NavigateCommand}" CommandParameter="Questions" />
                     </Image.GestureRecognizers>
                 </Image>
+                <Button Text="Déconnexion" BackgroundColor="#87CEFA" TextColor="White"  VerticalOptions="Start" HeightRequest="50" Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="0,0,0,2" Command="{Binding Path=NavigateCommand}" CommandParameter="Hello"/>
             </Grid>
         </Grid>
 
