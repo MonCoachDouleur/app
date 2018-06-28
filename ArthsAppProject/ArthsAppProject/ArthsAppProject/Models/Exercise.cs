@@ -15,7 +15,7 @@ namespace ArthsAppProject
 
         public DateTime DayExo { get; set; }
 
-        public int Id_user;
+        public int Id_user { get; set; }
 
         public Exercise() { }
 

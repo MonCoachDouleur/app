@@ -12,6 +12,8 @@ namespace ArthsAppProject
     public interface IRepository<T> where T : class, new()
     {
         Task<List<T>> GetAll();
+
+        Task<List<T>> GetWithQuery(string query);
         Task<T> Get(int id);
         Task<T> GetWithChild(int id);
         Task<List<T>> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null);
@@ -79,6 +81,11 @@ namespace ArthsAppProject
 
         public async void InsertAll(IEnumerable entities) =>
            await db.InsertAllAsync(entities);
+
+        public async Task<List<T>> GetWithQuery(string query)
+        {
+            return await db.QueryAsync<T>(query);
+        }
     }
 
 }

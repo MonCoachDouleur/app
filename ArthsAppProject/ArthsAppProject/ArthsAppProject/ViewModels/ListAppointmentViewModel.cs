@@ -11,11 +11,11 @@ namespace ArthsAppProject.ViewModels
 {
     class ListAppointmentViewModel : ObservedBase
     {
-        public Doctor Doctor { get; set; }
+        public NotifyTaskCompletion<Doctor> DoctorTask { get; private set; }
         public ListAppointmentViewModel(INavigationService navigationService) : base(navigationService)
         {
             int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
-            loadData(idUser);
+            DoctorTask = new NotifyTaskCompletion<Doctor>(App.Database.doctorRepo.Get(idUser));
             GetAppointment();
         }
         private ObservableCollection<Appointment> _appointment;
@@ -31,12 +31,9 @@ namespace ArthsAppProject.ViewModels
         }
         public async void GetAppointment()
         {
-            Appointments = new ObservableCollection<Appointment>(await App.Database.appointmentRepo.GetAll());
-        }
-
-        private async void loadData(int idUser)
-        {
-            Doctor = await App.Database.doctorRepo.Get(idUser);
+            int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
+            String Query = "Select * from Appointment where user_Id =" + idUser;
+            Appointments = new ObservableCollection<Appointment>(await App.Database.appointmentRepo.GetWithQuery(Query));
         }
 
     }

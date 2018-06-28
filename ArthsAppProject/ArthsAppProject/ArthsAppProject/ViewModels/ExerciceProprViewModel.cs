@@ -44,7 +44,10 @@ namespace ArthsAppProject.ViewModels
         }
         public async void GetExercices()
         {
-            Exercises = new ObservableCollection<ExercisePrepro>(await App.Database.exercisePreproRepo.Get(null, (mycustomer => mycustomer.Titre)));
+            int idUser = Convert.ToInt32(App.Current.Properties[PropertiesHelper.Id_User_Key]);
+            User user = await App.Database.userRepo.Get(idUser);
+            String Query = "Select * from ExercisePrepro where ZonePain = '" + user.PainArea.ToString() + "'";
+            Exercises = new ObservableCollection<ExercisePrepro>(await App.Database.exercisePreproRepo.GetWithQuery(Query));
         }
 
         public string DurationExo

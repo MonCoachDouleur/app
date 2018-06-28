@@ -20,6 +20,7 @@ namespace ArthsAppProject
 
         readonly SQLiteAsyncConnection database;
         private User admin;
+
         public ArthsDatabase(string dbPath)
         {
             admin = new User("test@hotmail.fr", "test", "Durand", "Nicolas", DateTime.Now, PainAreaEnum.Genoux);
@@ -53,10 +54,14 @@ namespace ArthsAppProject
         public void AddExoProprAsync()
         {
             List<ExercisePrepro> exercices = new List<ExercisePrepro>(){
-                new ExercisePrepro(){ZonePain ="Dos",Titre="3. Apaiser les tensions dorsales", Description="Pour cet exercice, on s'allonge confortablement à terre, mains face au sol, jambes légèrement fléchies et pieds écartés. Il suffit ensuite de visualiser le chiffre 8, puis de reprendre ce simple mouvement avec le menton en veillant à respirer profondément.", ImgName="Arth.png"},
-                new ExercisePrepro(){ZonePain ="Dos",Titre="2. Assouplir la colonne vertébrale", Description="Lorsque l'on souffre d'arthrose dorsale, il faut absolument prendre le temps de détendre quotidiennement la colonne vertébrale afin de soulager la douleur. Pour cet exercice, on se tient debout, le ventre rentré, le dos bien droit et les pieds légèrement écartés. Il s'agit de rentrer progressivement la tête vers le buste, puis de dérouler les vertèbres les unes après les autres en inspirant profondément. On expire lorsque l'on se redresse très doucement.", ImgName="Arth.png"},
-                new ExercisePrepro(){ZonePain ="Dos",Titre="1. Tonifier les muscles dorsaux", Description="Assis confortablement en tailleur, on positionne les mains jointes devant la poitrine et on conserve le dos parfaitement droit. On inspire profondément en allongeant la colonne et en effectuant de légères rotations sur le côté avec l'ensemble du buste. L'alignement tête-poitrine-dos doit être parfait. On expire lentement en reprenant la position initiale.", ImgName="Arth.png"}
+                new ExercisePrepro(){ZonePain ="Genoux",Titre="3. Apaiser les tensions dorsales", Description="Pour cet exercice, on s'allonge confortablement à terre, mains face au sol, jambes légèrement fléchies et pieds écartés. Il suffit ensuite de visualiser le chiffre 8, puis de reprendre ce simple mouvement avec le menton en veillant à respirer profondément.", ImgName="Arth.png"},
+                new ExercisePrepro(){ZonePain ="Genoux",Titre="2. Assouplir la colonne vertébrale", Description="Lorsque l'on souffre d'arthrose dorsale, il faut absolument prendre le temps de détendre quotidiennement la colonne vertébrale afin de soulager la douleur. Pour cet exercice, on se tient debout, le ventre rentré, le dos bien droit et les pieds légèrement écartés. Il s'agit de rentrer progressivement la tête vers le buste, puis de dérouler les vertèbres les unes après les autres en inspirant profondément. On expire lorsque l'on se redresse très doucement.", ImgName="Arth.png"},
+                new ExercisePrepro(){ZonePain ="Genoux",Titre="1. Tonifier les muscles dorsaux", Description="Assis confortablement en tailleur, on positionne les mains jointes devant la poitrine et on conserve le dos parfaitement droit. On inspire profondément en allongeant la colonne et en effectuant de légères rotations sur le côté avec l'ensemble du buste. L'alignement tête-poitrine-dos doit être parfait. On expire lentement en reprenant la position initiale.", ImgName="Arth.png"},
+                new ExercisePrepro(){ZonePain ="Hanches",Titre="Titre01", Description="Descipt01.", ImgName="Arth.png"},
+                new ExercisePrepro(){ZonePain ="Hanches",Titre="Titre02", Description="Descipt02.", ImgName="Arth.png"}
+
             };
+
             exercisePreproRepo.InsertAll(exercices);
         }
 
