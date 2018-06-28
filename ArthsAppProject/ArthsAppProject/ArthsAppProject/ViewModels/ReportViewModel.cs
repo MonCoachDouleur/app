@@ -1,12 +1,8 @@
-using System;
-using Prism;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using ArthsAppProject.Infrastructure;
 using Microcharts;
 using SkiaSharp;
-using Microcharts.Forms;
+using Xamarin.Forms;
 
 namespace ArthsAppProject.ViewModels
 {
@@ -25,21 +21,23 @@ namespace ArthsAppProject.ViewModels
 
         public ReportViewModel(INavigationService navigationService) : base(navigationService)
         {
+
+
             var entries = new[]
             {
-                new Entry(200)
+                new Microcharts.Entry(200)
                 {
                     Label = "January",
                     ValueLabel = "200",
                 Color = SKColor.Parse("#266489")
                 },
-                new Entry(400)
+                new Microcharts.Entry(400)
                 {
                 Label = "February",
                 ValueLabel = "400",
                 Color = SKColor.Parse("#68B9C0")
                 },
-                new Entry(-100)
+                new Microcharts.Entry(-100)
                 {
                 Label = "March",
                 ValueLabel = "-100",
@@ -47,7 +45,8 @@ namespace ArthsAppProject.ViewModels
                 }
             };
 
-            Chart = new BarChart() { Entries = entries };
+            Chart = new LineChart() { Entries = entries };
         }
+
     }
 }
