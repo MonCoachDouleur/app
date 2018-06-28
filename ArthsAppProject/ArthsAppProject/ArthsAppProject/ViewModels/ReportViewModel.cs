@@ -2,9 +2,7 @@ using Prism.Navigation;
 using ArthsAppProject.Infrastructure;
 using Microcharts;
 using SkiaSharp;
-using PdfSharp.Xamarin.Forms;
 using Xamarin.Forms;
-using PdfSharp.Xamarin.Forms.Contracts;
 
 namespace ArthsAppProject.ViewModels
 {
@@ -23,6 +21,8 @@ namespace ArthsAppProject.ViewModels
 
         public ReportViewModel(INavigationService navigationService) : base(navigationService)
         {
+
+
             var entries = new[]
             {
                 new Microcharts.Entry(200)

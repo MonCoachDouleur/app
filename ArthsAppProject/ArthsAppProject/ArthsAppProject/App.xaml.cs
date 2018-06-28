@@ -6,8 +6,6 @@ using Xamarin.Forms.Xaml;
 using ArthsAppProject.Views;
 using ArthsAppProject.ViewModels;
 using System;
-using PdfSharp.Xamarin.Forms;
-using PdfSharp.Xamarin.Forms.Contracts;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ArthsAppProject
@@ -41,7 +39,6 @@ namespace ArthsAppProject
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            PDFManager.Init(DependencyService.Get<IPDFHandler>());
             await NavigationService.NavigateAsync("Hello");
         }
 

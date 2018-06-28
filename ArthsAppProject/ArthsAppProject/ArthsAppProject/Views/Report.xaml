@@ -5,7 +5,6 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-    xmlns:pdf="clr-namespace:PdfSharp.Xamarin.Forms;assembly=PdfSharp.Xamarin.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
 	xmlns:local="clr-namespace:ArthsAppProject.Views;assembly=ArthsAppProject"
     x:Class="ArthsAppProject.Views.Report"
@@ -17,9 +16,6 @@
         <StackLayout>
             <Label Text="Microcharts" TextColor="White" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
             <forms:ChartView x:Name="chart" Chart="{Binding Chart}" HeightRequest="350" />
-
-            <Button pdf:PdfRendererAttributes.ShouldRender="False" Text="Generate PDF" 
-                        HorizontalOptions="Center" Clicked="GeneratePDF" />
         </StackLayout>
     </ScrollView>
 

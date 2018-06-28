@@ -57,10 +57,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\Downloads\PDFSharp.Xamarin.Forms-master\PdfSharp.Xamarin.Forms\PdfSharp.Xamarin.Forms.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Views\Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
